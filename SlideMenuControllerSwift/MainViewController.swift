@@ -7,18 +7,158 @@
 
 import UIKit
 
-class MainViewController: UIViewController {
+class MainViewController: UIViewController, UITextFieldDelegate {
 
-//    @IBOutlet weak var tableView: UITableView!
+    var depositPrice: Int = 0;
+    var monthlyPrice: Int = 0;
+    var buyTotalPrice: Int = 0;
+    var loanPrice: Int = 0;
+    var loanRate: Float = 0.0;
+    @IBOutlet var propertyPriceResult: UILabel!
     
-//    var mainContens = ["data1", "data2", "data3", "data4", "data5", "data6", "data7", "data8", "data9", "data10", "data11", "data12", "data13", "data14", "data15"]
+    @IBOutlet weak var monthlyTextField: UITextField!
+    @IBOutlet weak var depositTextField: UITextField!
+    @IBOutlet weak var buyTotalPriceTextField: UITextField!
+    @IBOutlet weak var loanPriceTextField: UITextField!
+    @IBOutlet weak var loanRateTextField: UITextField!
+    
+    @IBOutlet var scrollView: UIScrollView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        initializeTextFields()
         self.title = "임대수익률"
-//        self.tableView.registerCellNib(DataTableViewCell.self)
+//        scrollView.contentSize = CGSize(width: self.view.frame.width, height: self.view.frame.height+100)
     }
+    
+    // Designate this class as the text fields' delegate
+    // and set their keyboards while we're at it.
+    func initializeTextFields() {
+        monthlyTextField.delegate = self
+        monthlyTextField.keyboardType = UIKeyboardType.numberPad
+        
+        depositTextField.delegate = self
+        depositTextField.keyboardType = UIKeyboardType.numberPad
+        
+        buyTotalPriceTextField.delegate = self
+        buyTotalPriceTextField.keyboardType = UIKeyboardType.numberPad
+        
+        loanPriceTextField.delegate = self
+        loanPriceTextField.keyboardType = UIKeyboardType.numberPad
+        
+        loanRateTextField.delegate = self
+        loanRateTextField.keyboardType = UIKeyboardType.decimalPad
+    }
+    
+    // MARK: UITextFieldDelegate events and related methods
+    
+    func textField(_ textField: UITextField,
+                   shouldChangeCharactersIn range: NSRange,
+                   replacementString string: String)
+        -> Bool
+    {
+        if string.characters.count == 0 {
+            return true
+        }
+        
+        let currentText = textField.text ?? ""
+        let prospectiveText = (currentText as NSString).replacingCharacters(in: range, with: string)
+        
+        switch textField {
+            
+        case monthlyTextField,
+             depositTextField,
+             buyTotalPriceTextField,
+             loanPriceTextField,
+             loanRateTextField:
+            print(currentText)
+            return prospectiveText.characters.count <= 3
+        default:
+            return true
+        }
+        
+    }
+    
+    
+    // 월세
+    @IBAction func monthlyTextFieldChanged(_ sender: UITextField) {
+        
+        print("monthlyPrice");
+    
+        if let text = sender.text, !text.isEmpty {
+            monthlyPrice = Int(text)!;
+        } else {
+            monthlyPrice = 0;
+        }
+        
+        
+    
+        let calPropertyPriceResult = depositPrice + (monthlyPrice * 200)
+        
+        propertyPriceResult.text = String(calPropertyPriceResult)
+        print("monthlyPrice : ",monthlyPrice);
+        print("depositPrice : ",depositPrice);
+    }
+    
+    // 임대 보증금
+    @IBAction func depositTextFieldChanged(_ sender: UITextField) {
+        
+        print("depositPrice");
+        
+        if let text = sender.text, !text.isEmpty {
+            depositPrice = Int(text)!;
+        } else {
+            depositPrice = 0;
+        }
+        
+        let calPropertyPriceResult = depositPrice + (monthlyPrice * 200)
+        
+        propertyPriceResult.text = String(calPropertyPriceResult)
+        
+        print("monthlyPrice : ",monthlyPrice);
+        print("depositPrice : ",depositPrice);
+        
+    }
+    
+    // 분양가
+    @IBAction func buyTotalPriceTextFieldChanged(_ sender: UITextField) {
+        print("buyTotalPrice");
+        
+        if let text = sender.text, !text.isEmpty {
+            buyTotalPrice = Int(text)!;
+        } else {
+            buyTotalPrice = 0;
+        }
+        
+        
+    }
+
+    // 대출금
+    @IBAction func loanPriceTextFieldChanged(_ sender: UITextField) {
+        print("loanPrice");
+        
+        if let text = sender.text, !text.isEmpty {
+            loanPrice = Int(text)!;
+        } else {
+            loanPrice = 0;
+        }
+        
+        
+    }
+    
+    // 대출금리
+    @IBAction func loanRateTextFieldChanged(_ sender: UITextField) {
+        print("loanRate");
+        
+        if let text = sender.text, !text.isEmpty {
+            loanRate = Float(text)!;
+        } else {
+            loanRate = 0;
+        }
+        
+        
+    }
+
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
@@ -34,32 +174,6 @@ class MainViewController: UIViewController {
     }
 
 }
-
-
-//extension MainViewController : UITableViewDelegate {
-//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-//        return DataTableViewCell.height()
-//    }
-//    
-//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        let storyboard = UIStoryboard(name: "SubContentsViewController", bundle: nil)
-//        let subContentsVC = storyboard.instantiateViewController(withIdentifier: "SubContentsViewController") as! SubContentsViewController
-//        self.navigationController?.pushViewController(subContentsVC, animated: true)
-//    }
-//}
-//
-//extension MainViewController : UITableViewDataSource {
-//    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        return self.mainContens.count
-//    }
-//     
-//    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//        let cell = self.tableView.dequeueReusableCell(withIdentifier: DataTableViewCell.identifier) as! DataTableViewCell
-//        let data = DataTableViewCellData(imageUrl: "dummy", text: mainContens[indexPath.row])
-//        cell.setData(data)
-//        return cell
-//    }
-//}
 
 extension MainViewController : SlideMenuControllerDelegate {
     
