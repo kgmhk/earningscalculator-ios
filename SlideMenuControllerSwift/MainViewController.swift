@@ -1,9 +1,4 @@
-//
-//  ViewController.swift
-//  SlideMenuControllerSwift
-//
-//  Created by Yuji Hato on 12/3/14.
-//
+//  Created by gihyun on 07/.
 
 import UIKit
 
@@ -14,7 +9,13 @@ class MainViewController: UIViewController, UITextFieldDelegate {
     var buyTotalPrice: Int = 0;
     var loanPrice: Int = 0;
     var loanRate: Float = 0.0;
+    let formatter = NumberFormatter()
+    
+    
     @IBOutlet var propertyPriceResult: UILabel!
+    @IBOutlet var realInvestmentPriceResult: UILabel!
+    @IBOutlet var yearlyInterestPriceResult: UILabel!
+    @IBOutlet var yearlyRentRevenuePriceResult: UILabel!
     
     @IBOutlet weak var monthlyTextField: UITextField!
     @IBOutlet weak var depositTextField: UITextField!
@@ -28,7 +29,8 @@ class MainViewController: UIViewController, UITextFieldDelegate {
         super.viewDidLoad()
         initializeTextFields()
         self.title = "임대수익률"
-//        scrollView.contentSize = CGSize(width: self.view.frame.width, height: self.view.frame.height+100)
+        formatter.numberStyle = .currency
+        formatter.currencySymbol = ""
     }
     
     // Designate this class as the text fields' delegate
@@ -63,22 +65,22 @@ class MainViewController: UIViewController, UITextFieldDelegate {
         
         let currentText = textField.text ?? ""
         let prospectiveText = (currentText as NSString).replacingCharacters(in: range, with: string)
-        
+
         switch textField {
-            
-        case monthlyTextField,
-             depositTextField,
-             buyTotalPriceTextField,
-             loanPriceTextField,
-             loanRateTextField:
-            print(currentText)
-            return prospectiveText.characters.count <= 3
-        default:
-            return true
+            case monthlyTextField,
+                 depositTextField,
+                 buyTotalPriceTextField,
+                 loanPriceTextField:
+        
+                print(currentText)
+                return prospectiveText.characters.count <= 10
+            case loanRateTextField:
+                return prospectiveText.characters.count <= 10
+            default:
+                return true
         }
         
     }
-    
     
     // 월세
     @IBAction func monthlyTextFieldChanged(_ sender: UITextField) {
@@ -91,13 +93,17 @@ class MainViewController: UIViewController, UITextFieldDelegate {
             monthlyPrice = 0;
         }
         
-        
-    
         let calPropertyPriceResult = depositPrice + (monthlyPrice * 200)
+        let convertedcalPropertyPriceResult = calPropertyPriceResult as NSNumber
+        let formatedCalPropertyPrice = formatter.string(from: convertedcalPropertyPriceResult)!
         
-        propertyPriceResult.text = String(calPropertyPriceResult)
-        print("monthlyPrice : ",monthlyPrice);
-        print("depositPrice : ",depositPrice);
+        propertyPriceResult.text = String(formatedCalPropertyPrice)
+        
+        let yearlyRentRevenueCalResult = monthlyPrice * 12;
+        let convertedYearlyRentRevenueCalResult = yearlyRentRevenueCalResult as NSNumber;
+        let formatedYearlyRentRevenueResult = formatter.string(from: convertedYearlyRentRevenueCalResult);
+        
+        yearlyRentRevenuePriceResult.text = formatedYearlyRentRevenueResult;
     }
     
     // 임대 보증금
@@ -112,8 +118,10 @@ class MainViewController: UIViewController, UITextFieldDelegate {
         }
         
         let calPropertyPriceResult = depositPrice + (monthlyPrice * 200)
+        let convertedcalPropertyPriceResult = calPropertyPriceResult as NSNumber
+        let formatedText = formatter.string(from: convertedcalPropertyPriceResult)!
         
-        propertyPriceResult.text = String(calPropertyPriceResult)
+        propertyPriceResult.text = String(formatedText)
         
         print("monthlyPrice : ",monthlyPrice);
         print("depositPrice : ",depositPrice);
@@ -130,7 +138,11 @@ class MainViewController: UIViewController, UITextFieldDelegate {
             buyTotalPrice = 0;
         }
         
+        let realInvestment = buyTotalPrice - depositPrice - loanPrice;
+        let convertedRealInvestment = realInvestment as NSNumber;
+        let formatedText = formatter.string(from: convertedRealInvestment);
         
+        realInvestmentPriceResult.text = formatedText;
     }
 
     // 대출금
@@ -143,7 +155,18 @@ class MainViewController: UIViewController, UITextFieldDelegate {
             loanPrice = 0;
         }
         
+        let yearlyRevenueCalResult = (Float(loanPrice) * loanRate) / 100;
+        let convertedYearlyRevenueCalResult = yearlyRevenueCalResult as NSNumber;
+        let formatedYearlyRevenueResult = formatter.string(from: convertedYearlyRevenueCalResult);
         
+        yearlyInterestPriceResult.text = formatedYearlyRevenueResult; // 연이자
+        
+        let realInvestment = buyTotalPrice - depositPrice - loanPrice;
+        let convertedRealInvestment = realInvestment as NSNumber;
+        let formatedRealInventmentResult = formatter.string(from: convertedRealInvestment);
+        
+        realInvestmentPriceResult.text = formatedRealInventmentResult; // 실투자비
+    
     }
     
     // 대출금리
@@ -156,7 +179,11 @@ class MainViewController: UIViewController, UITextFieldDelegate {
             loanRate = 0;
         }
         
+        let yearlyRevenueCalResult = (Float(loanPrice) * loanRate) / 100;
+        let convertedYearlyRevenueCalResult = yearlyRevenueCalResult as NSNumber;
+        let formatedYearlyRevenueResult = formatter.string(from: convertedYearlyRevenueCalResult);
         
+        yearlyInterestPriceResult.text = formatedYearlyRevenueResult; // 연이자
     }
 
     

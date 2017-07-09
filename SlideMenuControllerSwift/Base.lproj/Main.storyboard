@@ -97,11 +97,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" directionalLockEnabled="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hAw-NN-WGn">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" directionalLockEnabled="YES" keyboardDismissMode="onDrag" translatesAutoresizingMaskIntoConstraints="NO" id="hAw-NN-WGn">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JTl-2u-lDw" userLabel="Content View">
-                                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                    <view contentMode="scaleToFill" verticalCompressionResistancePriority="780" translatesAutoresizingMaskIntoConstraints="NO" id="JTl-2u-lDw" userLabel="Content View">
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="700"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="임대료 추정 적정가치시세" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I05-X2-VwH">
                                                 <rect key="frame" x="20" y="20" width="221" height="27"/>
@@ -115,11 +115,10 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="izj-uk-wGa" userLabel="보증금필드">
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="right" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="izj-uk-wGa" userLabel="보증금필드">
                                                 <rect key="frame" x="170" y="60" width="380" height="30"/>
                                                 <nil key="textColor"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                                <textInputTraits key="textInputTraits" keyboardType="numberPad" enablesReturnKeyAutomatically="YES"/>
                                                 <connections>
                                                     <action selector="depositTextFieldChanged:" destination="BYZ-38-t0r" eventType="editingChanged" id="xNS-Pf-tA5"/>
                                                 </connections>
@@ -130,7 +129,7 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mPV-8M-u4a" userLabel="월세필드">
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="right" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="mPV-8M-u4a" userLabel="월세필드">
                                                 <rect key="frame" x="170" y="100" width="380" height="30"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -182,11 +181,11 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="a0j-N7-q4a" userLabel="분양가 필드">
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="right" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="a0j-N7-q4a" userLabel="분양가 필드">
                                                 <rect key="frame" x="170" y="231" width="380" height="30"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
+                                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                                 <connections>
                                                     <action selector="buyTotalPriceTextFieldChanged:" destination="BYZ-38-t0r" eventType="editingChanged" id="7j3-mZ-d9a"/>
                                                 </connections>
@@ -203,11 +202,11 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="SrT-3J-njG">
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="right" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="SrT-3J-njG">
                                                 <rect key="frame" x="170" y="272" width="380" height="30"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES"/>
+                                                <textInputTraits key="textInputTraits" keyboardType="numberPad" enablesReturnKeyAutomatically="YES"/>
                                                 <connections>
                                                     <action selector="loanPriceTextFieldChanged:" destination="BYZ-38-t0r" eventType="editingChanged" id="mUw-Y6-8YI"/>
                                                 </connections>
@@ -224,17 +223,156 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rgd-ia-hLg">
-                                                <rect key="frame" x="170" y="314" width="380" height="30"/>
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="right" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="rgd-ia-hLg">
+                                                <rect key="frame" x="170" y="314" width="382" height="30"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
+                                                <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
                                                 <connections>
                                                     <action selector="loanRateTextFieldChanged:" destination="BYZ-38-t0r" eventType="editingChanged" id="zFi-vu-9Ju"/>
                                                 </connections>
                                             </textField>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="원" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7in-c0-AZG">
-                                                <rect key="frame" x="565" y="320" width="15" height="21"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="%" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7in-c0-AZG">
+                                                <rect key="frame" x="567" y="320" width="13" height="21"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="임대 수익률 계산 결과" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nJb-6Q-vvA" userLabel="임대 수익률 계산 결과">
+                                                <rect key="frame" x="20" y="364" width="189" height="27"/>
+                                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="임대수익률" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IcI-nJ-vHJ">
+                                                <rect key="frame" x="20" y="401" width="74" height="21"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cDw-nr-UxM" userLabel="임대수익률 결과">
+                                                <rect key="frame" x="539" y="401" width="11" height="21"/>
+                                                <accessibility key="accessibilityConfiguration" identifier="propertyPriceResult" label="propertyPriceResult"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="원" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HRi-9s-iYn">
+                                                <rect key="frame" x="565" y="401" width="15" height="21"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="실투자비" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h9x-jM-GWP" userLabel="실투자비">
+                                                <rect key="frame" x="20" y="432" width="59" height="21"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eTA-5C-V5s" userLabel="실투자비 결과">
+                                                <rect key="frame" x="539" y="432" width="11" height="21"/>
+                                                <accessibility key="accessibilityConfiguration" identifier="propertyPriceResult" label="propertyPriceResult"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="원" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6ft-vP-iMJ">
+                                                <rect key="frame" x="565" y="432" width="15" height="21"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="연간임대료 수입" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZJh-kS-j8u">
+                                                <rect key="frame" x="20" y="463" width="108" height="21"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yp3-5b-sXU" userLabel="연간임대료 수입 결과">
+                                                <rect key="frame" x="539" y="463" width="11" height="21"/>
+                                                <accessibility key="accessibilityConfiguration" identifier="propertyPriceResult" label="propertyPriceResult"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="원" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HOX-1V-sni">
+                                                <rect key="frame" x="565" y="463" width="15" height="21"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="연이자" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ksT-HZ-7yO">
+                                                <rect key="frame" x="20" y="494" width="45" height="21"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nII-kh-LWi" userLabel="연이자 결과">
+                                                <rect key="frame" x="539" y="494" width="11" height="21"/>
+                                                <accessibility key="accessibilityConfiguration" identifier="propertyPriceResult" label="propertyPriceResult"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="원" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dWw-iJ-LZC">
+                                                <rect key="frame" x="565" y="494" width="15" height="21"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="연순수익" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ihi-IR-Ksq">
+                                                <rect key="frame" x="20" y="525" width="59" height="21"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7d8-rs-zMh" userLabel="연순수익 결과">
+                                                <rect key="frame" x="539" y="525" width="11" height="21"/>
+                                                <accessibility key="accessibilityConfiguration" identifier="propertyPriceResult" label="propertyPriceResult"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="원" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IHY-lG-M6V">
+                                                <rect key="frame" x="565" y="525" width="15" height="21"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="월이자" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BQj-ry-KTp">
+                                                <rect key="frame" x="20" y="556" width="45" height="21"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B6T-Cz-j3a" userLabel="월이자 결과">
+                                                <rect key="frame" x="539" y="556" width="11" height="21"/>
+                                                <accessibility key="accessibilityConfiguration" identifier="propertyPriceResult" label="propertyPriceResult"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="원" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tW2-pQ-lN8">
+                                                <rect key="frame" x="565" y="556" width="15" height="21"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="월순수익" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ofU-y6-O15">
+                                                <rect key="frame" x="20" y="587" width="59" height="21"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dxE-81-R4P" userLabel="월순수익 결과">
+                                                <rect key="frame" x="539" y="587" width="11" height="21"/>
+                                                <accessibility key="accessibilityConfiguration" identifier="propertyPriceResult" label="propertyPriceResult"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="원" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p3Y-Ns-yrp">
+                                                <rect key="frame" x="565" y="587" width="15" height="21"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -243,50 +381,100 @@
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="trailing" secondItem="7Fc-ha-wac" secondAttribute="trailing" constant="20" id="1P5-US-TFl"/>
+                                            <constraint firstItem="ksT-HZ-7yO" firstAttribute="top" secondItem="ZJh-kS-j8u" secondAttribute="bottom" constant="10" id="27b-UC-0pr"/>
                                             <constraint firstItem="YET-t8-dNM" firstAttribute="top" secondItem="xCt-2o-ICU" secondAttribute="bottom" constant="20" id="3Sm-B8-sma"/>
                                             <constraint firstItem="7Fc-ha-wac" firstAttribute="leading" secondItem="SrT-3J-njG" secondAttribute="trailing" constant="15" id="3ts-ga-MYl"/>
                                             <constraint firstItem="xCt-2o-ICU" firstAttribute="top" secondItem="4dy-as-uMY" secondAttribute="bottom" constant="20" id="41D-sw-Wcn"/>
+                                            <constraint firstItem="6ft-vP-iMJ" firstAttribute="leading" secondItem="eTA-5C-V5s" secondAttribute="trailing" constant="15" id="5Gl-Bh-l7F"/>
                                             <constraint firstItem="7in-c0-AZG" firstAttribute="leading" secondItem="rgd-ia-hLg" secondAttribute="trailing" constant="15" id="6rP-9P-M5F"/>
+                                            <constraint firstItem="tW2-pQ-lN8" firstAttribute="top" secondItem="IHY-lG-M6V" secondAttribute="bottom" constant="10" id="6vW-c5-rOW"/>
+                                            <constraint firstItem="ZJh-kS-j8u" firstAttribute="top" secondItem="h9x-jM-GWP" secondAttribute="bottom" constant="10" id="6x1-ly-HD8"/>
                                             <constraint firstItem="a0j-N7-q4a" firstAttribute="top" secondItem="JTl-2u-lDw" secondAttribute="top" constant="231" id="7CE-Kk-C7w"/>
+                                            <constraint firstItem="BQj-ry-KTp" firstAttribute="top" secondItem="ihi-IR-Ksq" secondAttribute="bottom" constant="10" id="7GC-Iz-sDO"/>
+                                            <constraint firstAttribute="trailing" secondItem="6ft-vP-iMJ" secondAttribute="trailing" constant="20" id="7Nk-G1-w0X"/>
                                             <constraint firstAttribute="trailing" secondItem="qHE-Ba-Nte" secondAttribute="trailing" constant="20" id="7ad-HN-0Iq"/>
+                                            <constraint firstItem="nJb-6Q-vvA" firstAttribute="top" secondItem="rgd-ia-hLg" secondAttribute="bottom" constant="20" id="ANH-Lb-STG"/>
                                             <constraint firstItem="rgd-ia-hLg" firstAttribute="top" secondItem="JTl-2u-lDw" secondAttribute="top" constant="314" id="ApO-7g-L8G"/>
+                                            <constraint firstItem="dWw-iJ-LZC" firstAttribute="baseline" secondItem="nII-kh-LWi" secondAttribute="baseline" id="BHn-EV-PwA"/>
                                             <constraint firstItem="mPV-8M-u4a" firstAttribute="top" secondItem="JTl-2u-lDw" secondAttribute="top" constant="100" id="BVd-3y-jGZ"/>
                                             <constraint firstItem="cWu-eg-MdS" firstAttribute="leading" secondItem="mPV-8M-u4a" secondAttribute="trailing" constant="15" id="BYj-Ib-zvL"/>
+                                            <constraint firstItem="7d8-rs-zMh" firstAttribute="top" secondItem="nII-kh-LWi" secondAttribute="bottom" constant="10" id="BlA-Vr-wii"/>
+                                            <constraint firstItem="ihi-IR-Ksq" firstAttribute="leading" secondItem="JTl-2u-lDw" secondAttribute="leading" constant="20" id="CAO-Pk-l0j"/>
+                                            <constraint firstItem="tW2-pQ-lN8" firstAttribute="baseline" secondItem="B6T-Cz-j3a" secondAttribute="baseline" id="ChX-r5-uWw"/>
+                                            <constraint firstItem="p3Y-Ns-yrp" firstAttribute="top" secondItem="tW2-pQ-lN8" secondAttribute="bottom" constant="10" id="DZV-WR-50f"/>
+                                            <constraint firstAttribute="trailing" secondItem="HRi-9s-iYn" secondAttribute="trailing" constant="20" id="Dab-nT-cmW"/>
                                             <constraint firstItem="8dT-oE-eqa" firstAttribute="top" secondItem="VtU-mG-m2S" secondAttribute="bottom" constant="20" id="DgN-Au-pwk"/>
+                                            <constraint firstItem="ksT-HZ-7yO" firstAttribute="leading" secondItem="JTl-2u-lDw" secondAttribute="leading" constant="20" id="FXR-Yr-Psj"/>
+                                            <constraint firstItem="B6T-Cz-j3a" firstAttribute="top" secondItem="7d8-rs-zMh" secondAttribute="bottom" constant="10" id="Fls-LQ-G79"/>
                                             <constraint firstItem="mPV-8M-u4a" firstAttribute="leading" secondItem="JTl-2u-lDw" secondAttribute="leading" constant="170" id="G5p-6i-3mY"/>
+                                            <constraint firstItem="ihi-IR-Ksq" firstAttribute="top" secondItem="ksT-HZ-7yO" secondAttribute="bottom" constant="10" id="GW8-01-tSK"/>
+                                            <constraint firstItem="dxE-81-R4P" firstAttribute="top" secondItem="B6T-Cz-j3a" secondAttribute="bottom" constant="10" id="HkH-IZ-mzq"/>
                                             <constraint firstItem="7in-c0-AZG" firstAttribute="top" secondItem="7Fc-ha-wac" secondAttribute="bottom" constant="23" id="Hn7-SI-9EB"/>
                                             <constraint firstItem="SrT-3J-njG" firstAttribute="leading" secondItem="JTl-2u-lDw" secondAttribute="leading" constant="170" id="HzU-mL-XGB"/>
+                                            <constraint firstItem="dWw-iJ-LZC" firstAttribute="top" secondItem="HOX-1V-sni" secondAttribute="bottom" constant="10" id="IYI-KQ-CyY"/>
+                                            <constraint firstItem="IcI-nJ-vHJ" firstAttribute="top" secondItem="nJb-6Q-vvA" secondAttribute="bottom" constant="10" id="Ih5-RG-UlO"/>
                                             <constraint firstItem="PVX-nQ-yKS" firstAttribute="top" secondItem="mPV-8M-u4a" secondAttribute="bottom" constant="11" id="JQu-6O-ajb"/>
+                                            <constraint firstItem="IHY-lG-M6V" firstAttribute="baseline" secondItem="7d8-rs-zMh" secondAttribute="baseline" id="LH4-Rf-Ekh"/>
+                                            <constraint firstItem="HRi-9s-iYn" firstAttribute="leading" secondItem="cDw-nr-UxM" secondAttribute="trailing" constant="15" id="M1g-dI-CDZ"/>
+                                            <constraint firstAttribute="trailing" secondItem="HOX-1V-sni" secondAttribute="trailing" constant="20" id="MTp-P2-S4j"/>
                                             <constraint firstItem="PVX-nQ-yKS" firstAttribute="trailing" secondItem="mPV-8M-u4a" secondAttribute="trailing" id="MeE-xS-7ed"/>
+                                            <constraint firstItem="h9x-jM-GWP" firstAttribute="leading" secondItem="JTl-2u-lDw" secondAttribute="leading" constant="20" id="Mpl-Oz-N3d"/>
                                             <constraint firstItem="izj-uk-wGa" firstAttribute="leading" secondItem="JTl-2u-lDw" secondAttribute="leading" constant="170" id="OSR-s6-TRG"/>
+                                            <constraint firstItem="eTA-5C-V5s" firstAttribute="top" secondItem="cDw-nr-UxM" secondAttribute="bottom" constant="10" id="OgT-tM-LLX"/>
+                                            <constraint firstItem="p3Y-Ns-yrp" firstAttribute="baseline" secondItem="dxE-81-R4P" secondAttribute="baseline" id="PRa-He-DFS"/>
                                             <constraint firstItem="0IK-4s-0ij" firstAttribute="leading" secondItem="JTl-2u-lDw" secondAttribute="leading" constant="20" id="PrE-dF-Vgw"/>
+                                            <constraint firstItem="HOX-1V-sni" firstAttribute="baseline" secondItem="Yp3-5b-sXU" secondAttribute="baseline" id="Q4A-aU-ym0"/>
                                             <constraint firstItem="eNV-iC-kKw" firstAttribute="top" secondItem="cWu-eg-MdS" secondAttribute="bottom" constant="20" id="QUF-BZ-9xg"/>
                                             <constraint firstItem="SrT-3J-njG" firstAttribute="top" secondItem="JTl-2u-lDw" secondAttribute="top" constant="272" id="Qi9-eV-q90"/>
                                             <constraint firstItem="rgd-ia-hLg" firstAttribute="leading" secondItem="JTl-2u-lDw" secondAttribute="leading" constant="170" id="Sks-RZ-OK7"/>
+                                            <constraint firstItem="HRi-9s-iYn" firstAttribute="baseline" secondItem="cDw-nr-UxM" secondAttribute="baseline" id="Tdi-Zq-rce"/>
                                             <constraint firstItem="VtU-mG-m2S" firstAttribute="top" secondItem="YET-t8-dNM" secondAttribute="bottom" constant="20" id="UJa-GR-8ew"/>
                                             <constraint firstItem="0IK-4s-0ij" firstAttribute="top" secondItem="I05-X2-VwH" secondAttribute="bottom" constant="20" id="UNd-Ia-ao5"/>
                                             <constraint firstItem="4dy-as-uMY" firstAttribute="leading" secondItem="JTl-2u-lDw" secondAttribute="leading" constant="20" id="UdU-ec-h2p"/>
                                             <constraint firstItem="I05-X2-VwH" firstAttribute="leading" secondItem="JTl-2u-lDw" secondAttribute="leading" constant="20" id="Udi-7z-CcC"/>
                                             <constraint firstItem="I05-X2-VwH" firstAttribute="top" secondItem="JTl-2u-lDw" secondAttribute="top" constant="20" id="V6g-Uc-1gH"/>
                                             <constraint firstItem="8dT-oE-eqa" firstAttribute="leading" secondItem="JTl-2u-lDw" secondAttribute="leading" constant="20" id="VHd-0F-EjY"/>
+                                            <constraint firstItem="IcI-nJ-vHJ" firstAttribute="leading" secondItem="JTl-2u-lDw" secondAttribute="leading" constant="20" id="VOD-wR-Ry5"/>
                                             <constraint firstItem="Xhb-cj-xY8" firstAttribute="top" secondItem="eNV-iC-kKw" secondAttribute="top" constant="90" id="VZZ-bb-YQS"/>
+                                            <constraint firstItem="IHY-lG-M6V" firstAttribute="top" secondItem="dWw-iJ-LZC" secondAttribute="bottom" constant="10" id="XwM-81-PyV"/>
+                                            <constraint firstItem="ofU-y6-O15" firstAttribute="leading" secondItem="JTl-2u-lDw" secondAttribute="leading" constant="20" id="YNO-pD-bUR"/>
                                             <constraint firstAttribute="trailing" secondItem="eNV-iC-kKw" secondAttribute="trailing" constant="20" id="Z6N-8y-88o"/>
+                                            <constraint firstAttribute="trailing" secondItem="p3Y-Ns-yrp" secondAttribute="trailing" constant="20" id="ar4-N6-1Gv"/>
                                             <constraint firstItem="qHE-Ba-Nte" firstAttribute="leading" secondItem="izj-uk-wGa" secondAttribute="trailing" constant="15" id="auO-XA-zt4"/>
                                             <constraint firstItem="xCt-2o-ICU" firstAttribute="leading" secondItem="JTl-2u-lDw" secondAttribute="leading" constant="20" id="bHe-Op-Y1K"/>
+                                            <constraint firstItem="ZJh-kS-j8u" firstAttribute="leading" secondItem="JTl-2u-lDw" secondAttribute="leading" constant="20" id="bgW-al-Q04"/>
                                             <constraint firstItem="Xhb-cj-xY8" firstAttribute="leading" secondItem="a0j-N7-q4a" secondAttribute="trailing" constant="15" id="clT-43-Fbe"/>
                                             <constraint firstItem="qHE-Ba-Nte" firstAttribute="top" secondItem="JTl-2u-lDw" secondAttribute="top" constant="60" id="d9b-D9-9yS"/>
+                                            <constraint firstItem="Yp3-5b-sXU" firstAttribute="top" secondItem="eTA-5C-V5s" secondAttribute="bottom" constant="10" id="dNR-rk-jTB"/>
                                             <constraint firstItem="7Fc-ha-wac" firstAttribute="top" secondItem="Xhb-cj-xY8" secondAttribute="bottom" constant="23" id="dSh-Sq-J7b"/>
+                                            <constraint firstItem="h9x-jM-GWP" firstAttribute="top" secondItem="IcI-nJ-vHJ" secondAttribute="bottom" constant="10" id="dcG-a2-gPh"/>
+                                            <constraint firstItem="HRi-9s-iYn" firstAttribute="baseline" secondItem="IcI-nJ-vHJ" secondAttribute="baseline" id="fNk-7A-J9H"/>
+                                            <constraint firstItem="IHY-lG-M6V" firstAttribute="leading" secondItem="7d8-rs-zMh" secondAttribute="trailing" constant="15" id="gFZ-og-bJB"/>
+                                            <constraint firstAttribute="trailing" secondItem="IHY-lG-M6V" secondAttribute="trailing" constant="20" id="gMj-hM-IAG"/>
                                             <constraint firstItem="a0j-N7-q4a" firstAttribute="leading" secondItem="JTl-2u-lDw" secondAttribute="leading" constant="170" id="gOH-m5-xHl"/>
+                                            <constraint firstItem="6ft-vP-iMJ" firstAttribute="top" secondItem="HRi-9s-iYn" secondAttribute="bottom" constant="10" id="h8m-5A-wNt"/>
                                             <constraint firstAttribute="trailing" secondItem="7in-c0-AZG" secondAttribute="trailing" constant="20" id="iFr-Vd-iIv"/>
+                                            <constraint firstItem="HOX-1V-sni" firstAttribute="top" secondItem="6ft-vP-iMJ" secondAttribute="bottom" constant="10" id="iLT-4g-Q9w"/>
+                                            <constraint firstItem="p3Y-Ns-yrp" firstAttribute="leading" secondItem="dxE-81-R4P" secondAttribute="trailing" constant="15" id="jJE-pP-5Eo"/>
+                                            <constraint firstItem="dWw-iJ-LZC" firstAttribute="leading" secondItem="nII-kh-LWi" secondAttribute="trailing" constant="15" id="lBL-m2-haf"/>
+                                            <constraint firstItem="nJb-6Q-vvA" firstAttribute="leading" secondItem="JTl-2u-lDw" secondAttribute="leading" constant="20" id="ldq-s8-W9X"/>
                                             <constraint firstItem="4dy-as-uMY" firstAttribute="top" secondItem="0IK-4s-0ij" secondAttribute="bottom" constant="20" id="llc-aW-Ssb"/>
+                                            <constraint firstItem="6ft-vP-iMJ" firstAttribute="baseline" secondItem="eTA-5C-V5s" secondAttribute="baseline" id="mFW-Bn-rSb"/>
+                                            <constraint firstAttribute="trailing" secondItem="dWw-iJ-LZC" secondAttribute="trailing" constant="20" id="mTA-YK-oQC"/>
                                             <constraint firstItem="VtU-mG-m2S" firstAttribute="leading" secondItem="JTl-2u-lDw" secondAttribute="leading" constant="20" id="nCi-2u-Oxy"/>
                                             <constraint firstItem="iSh-wm-5qT" firstAttribute="top" secondItem="8dT-oE-eqa" secondAttribute="bottom" constant="20" id="nS2-Cb-KgH"/>
+                                            <constraint firstAttribute="trailing" secondItem="tW2-pQ-lN8" secondAttribute="trailing" constant="20" id="nhp-7f-Nyi"/>
                                             <constraint firstAttribute="trailing" secondItem="Xhb-cj-xY8" secondAttribute="trailing" constant="20" id="oID-tS-BLZ"/>
+                                            <constraint firstItem="HOX-1V-sni" firstAttribute="leading" secondItem="Yp3-5b-sXU" secondAttribute="trailing" constant="15" id="pva-hg-nFg"/>
+                                            <constraint firstItem="ofU-y6-O15" firstAttribute="top" secondItem="BQj-ry-KTp" secondAttribute="bottom" constant="10" id="qHf-7N-1xU"/>
                                             <constraint firstAttribute="trailing" secondItem="cWu-eg-MdS" secondAttribute="trailing" constant="20" id="qxr-Vf-iuD"/>
                                             <constraint firstItem="iSh-wm-5qT" firstAttribute="leading" secondItem="JTl-2u-lDw" secondAttribute="leading" constant="20" id="rTv-sL-MRL"/>
                                             <constraint firstItem="cWu-eg-MdS" firstAttribute="top" secondItem="qHE-Ba-Nte" secondAttribute="bottom" constant="20" id="ves-UX-2rA"/>
                                             <constraint firstItem="YET-t8-dNM" firstAttribute="leading" secondItem="JTl-2u-lDw" secondAttribute="leading" constant="20" id="wHN-7k-TH0"/>
+                                            <constraint firstItem="BQj-ry-KTp" firstAttribute="leading" secondItem="JTl-2u-lDw" secondAttribute="leading" constant="20" id="wmY-7U-7og"/>
                                             <constraint firstItem="izj-uk-wGa" firstAttribute="top" secondItem="JTl-2u-lDw" secondAttribute="top" constant="60" id="xbT-47-W46"/>
+                                            <constraint firstItem="tW2-pQ-lN8" firstAttribute="leading" secondItem="B6T-Cz-j3a" secondAttribute="trailing" constant="15" id="z74-qU-IlN"/>
+                                            <constraint firstItem="nII-kh-LWi" firstAttribute="top" secondItem="Yp3-5b-sXU" secondAttribute="bottom" constant="10" id="zYr-9v-d08"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -303,7 +491,7 @@
                             <constraint firstItem="JTl-2u-lDw" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" id="E2U-8P-cAs"/>
                             <constraint firstItem="hAw-NN-WGn" firstAttribute="bottom" secondItem="wfy-db-euE" secondAttribute="top" id="JQi-tG-Jn6"/>
                             <constraint firstAttribute="trailing" secondItem="hAw-NN-WGn" secondAttribute="trailing" id="LxD-Mi-sDM"/>
-                            <constraint firstItem="JTl-2u-lDw" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" id="Ngi-77-KfE"/>
+                            <constraint firstItem="JTl-2u-lDw" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" constant="100" id="Ngi-77-KfE"/>
                             <constraint firstItem="hAw-NN-WGn" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="hT5-N6-KF5"/>
                             <constraint firstItem="hAw-NN-WGn" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="vrZ-25-oCi"/>
                         </constraints>
@@ -317,6 +505,9 @@
                         <outlet property="loanRateTextField" destination="rgd-ia-hLg" id="j13-bT-Gqc"/>
                         <outlet property="monthlyTextField" destination="mPV-8M-u4a" id="ZLh-Ca-bgG"/>
                         <outlet property="propertyPriceResult" destination="PVX-nQ-yKS" id="CfN-F6-CLP"/>
+                        <outlet property="realInvestmentPriceResult" destination="eTA-5C-V5s" id="3e5-9L-c35"/>
+                        <outlet property="yearlyInterestPriceResult" destination="nII-kh-LWi" id="HyR-Va-K7D"/>
+                        <outlet property="yearlyRentRevenuePriceResult" destination="Yp3-5b-sXU" id="Wpd-mi-Q3n"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
