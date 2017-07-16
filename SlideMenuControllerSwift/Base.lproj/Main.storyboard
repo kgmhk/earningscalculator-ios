@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -118,6 +118,7 @@
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="right" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="izj-uk-wGa" userLabel="보증금필드">
                                                 <rect key="frame" x="170" y="60" width="380" height="30"/>
                                                 <nil key="textColor"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                 <textInputTraits key="textInputTraits" keyboardType="numberPad" enablesReturnKeyAutomatically="YES"/>
                                                 <connections>
                                                     <action selector="depositTextFieldChanged:" destination="BYZ-38-t0r" eventType="editingChanged" id="xNS-Pf-tA5"/>
@@ -251,14 +252,14 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cDw-nr-UxM" userLabel="임대수익률 결과">
-                                                <rect key="frame" x="539" y="401" width="11" height="21"/>
+                                                <rect key="frame" x="541" y="401" width="11" height="21"/>
                                                 <accessibility key="accessibilityConfiguration" identifier="propertyPriceResult" label="propertyPriceResult"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="원" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HRi-9s-iYn">
-                                                <rect key="frame" x="565" y="401" width="15" height="21"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="%" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HRi-9s-iYn">
+                                                <rect key="frame" x="567" y="401" width="13" height="21"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -288,7 +289,7 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yp3-5b-sXU" userLabel="연간임대료 수입 결과">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" restorationIdentifier="yearly" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yp3-5b-sXU" userLabel="연간임대료 수입 결과">
                                                 <rect key="frame" x="539" y="463" width="11" height="21"/>
                                                 <accessibility key="accessibilityConfiguration" identifier="propertyPriceResult" label="propertyPriceResult"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -503,10 +504,14 @@
                         <outlet property="depositTextField" destination="izj-uk-wGa" id="dOM-vN-2q9"/>
                         <outlet property="loanPriceTextField" destination="SrT-3J-njG" id="eKp-5L-HiZ"/>
                         <outlet property="loanRateTextField" destination="rgd-ia-hLg" id="j13-bT-Gqc"/>
+                        <outlet property="monthlyInterestPriceResult" destination="B6T-Cz-j3a" id="3pC-gN-bzo"/>
+                        <outlet property="monthlyPureRevenuePriceResult" destination="dxE-81-R4P" id="Esy-p3-ieg"/>
                         <outlet property="monthlyTextField" destination="mPV-8M-u4a" id="ZLh-Ca-bgG"/>
                         <outlet property="propertyPriceResult" destination="PVX-nQ-yKS" id="CfN-F6-CLP"/>
                         <outlet property="realInvestmentPriceResult" destination="eTA-5C-V5s" id="3e5-9L-c35"/>
+                        <outlet property="rentRevenueRatePriceResult" destination="cDw-nr-UxM" id="6Ju-RD-Gxs"/>
                         <outlet property="yearlyInterestPriceResult" destination="nII-kh-LWi" id="HyR-Va-K7D"/>
+                        <outlet property="yearlyPureRevenuePriceResult" destination="7d8-rs-zMh" id="4Fj-zu-J6J"/>
                         <outlet property="yearlyRentRevenuePriceResult" destination="Yp3-5b-sXU" id="Wpd-mi-Q3n"/>
                     </connections>
                 </viewController>
