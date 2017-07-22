@@ -2,6 +2,43 @@
 
 import UIKit
 
+extension String {
+    
+    // formatting text for currency textField
+    func currencyInputFormatting() -> String {
+        
+        var number: NSNumber!
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .currency
+        formatter.currencySymbol = ""
+        formatter.minimumFractionDigits = 0
+        
+        var amountWithPrefix = self
+        
+        print("amountWithPrefix" , amountWithPrefix);
+        
+        
+        // remove from String: "$", ".", ","
+        let regex = try! NSRegularExpression(pattern: "[^0-9]", options: .caseInsensitive)
+        amountWithPrefix = regex.stringByReplacingMatches(in: amountWithPrefix, options: NSRegularExpression.MatchingOptions(rawValue: 0), range: NSMakeRange(0, self.characters.count), withTemplate: "")
+        
+        let double = (amountWithPrefix as NSString).intValue
+        print("double", double);
+        number = NSNumber(value: (double / 1))
+        
+        print("number ", number);
+        
+        // if first number is 0 or all numbers were deleted
+        guard number != 0 as NSNumber else {
+            return ""
+        }
+        
+        print("formatter.string(from: number)!", formatter.string(from: number)!);
+        
+        return formatter.string(from: number)!
+    }
+}
+
 class MainViewController: UIViewController, UITextFieldDelegate {
 
     private static var YearlyRentRevenueContext = 0;
@@ -42,15 +79,52 @@ class MainViewController: UIViewController, UITextFieldDelegate {
         
         formatterToCurrency.numberStyle = .currency
         formatterToCurrency.currencySymbol = ""
+        formatterToCurrency.minimumFractionDigits = 0
         
         formatterToNumber.numberStyle = .decimal
         formatterToNumber.currencySymbol = ""
+        formatterToNumber.minimumFractionDigits = 0
         
         yearlyRentRevenuePriceResult.addObserver(self, forKeyPath: "text", options: [.old, .new], context: &MainViewController.YearlyRentRevenueContext)
         yearlyInterestPriceResult.addObserver(self, forKeyPath: "text", options: [.old, .new], context: &MainViewController.YearlyInterestPriceContext);
         yearlyPureRevenuePriceResult.addObserver(self, forKeyPath: "text", options: [.old, .new], context: &MainViewController.YearlyPureRevenuePriceContext)
         realInvestmentPriceResult.addObserver(self, forKeyPath: "text", options: [.old, .new], context: &MainViewController.RealInvestmentPriceContext)
+        
+        monthlyTextField.addTarget(self, action: #selector(myMonthlyFieldDidChange), for: .editingChanged)
+        depositTextField.addTarget(self, action: #selector(myDepositFieldDidChange), for: .editingChanged)
+        buyTotalPriceTextField.addTarget(self, action: #selector(myBuyTotalFieldDidChange), for: .editingChanged)
+        loanPriceTextField.addTarget(self, action: #selector(myLoanPriceFieldDidChange), for: .editingChanged)
     }
+    
+    func myMonthlyFieldDidChange(_ textField: UITextField) {
+        
+        if let amountString = monthlyTextField.text?.currencyInputFormatting() {
+            textField.text = amountString
+        }
+    }
+    
+    func myDepositFieldDidChange(_ textField: UITextField) {
+        
+        if let amountString = depositTextField.text?.currencyInputFormatting() {
+            textField.text = amountString
+        }
+    }
+    
+    func myBuyTotalFieldDidChange(_ textField: UITextField) {
+        
+        if let amountString = buyTotalPriceTextField.text?.currencyInputFormatting() {
+            textField.text = amountString
+        }
+    }
+    
+    func myLoanPriceFieldDidChange(_ textField: UITextField) {
+        
+        if let amountString = loanPriceTextField.text?.currencyInputFormatting() {
+            textField.text = amountString
+        }
+    }
+    
+    
     
     // Designate this class as the text fields' delegate
     // and set their keyboards while we're at it.
@@ -90,9 +164,8 @@ class MainViewController: UIViewController, UITextFieldDelegate {
                  depositTextField,
                  buyTotalPriceTextField,
                  loanPriceTextField:
-        
                 print(currentText)
-                return prospectiveText.characters.count <= 10
+                return prospectiveText.characters.count <= 14
             case loanRateTextField:
                 return prospectiveText.characters.count <= 10
             default:
@@ -107,7 +180,8 @@ class MainViewController: UIViewController, UITextFieldDelegate {
         print("monthlyPrice");
     
         if let text = sender.text, !text.isEmpty {
-            monthlyPrice = Int(text)!;
+            let replacedText = text.replacingOccurrences(of: ",", with: "")
+            monthlyPrice = Int(replacedText)!;
         } else {
             monthlyPrice = 0;
         }
@@ -131,7 +205,8 @@ class MainViewController: UIViewController, UITextFieldDelegate {
         print("depositPrice");
         
         if let text = sender.text, !text.isEmpty {
-            depositPrice = Int(text)!;
+            let replacedText = text.replacingOccurrences(of: ",", with: "")
+            depositPrice = Int(replacedText)!;
         } else {
             depositPrice = 0;
         }
@@ -152,7 +227,8 @@ class MainViewController: UIViewController, UITextFieldDelegate {
         print("buyTotalPrice");
         
         if let text = sender.text, !text.isEmpty {
-            buyTotalPrice = Int(text)!;
+            let replacedText = text.replacingOccurrences(of: ",", with: "")
+            buyTotalPrice = Int(replacedText)!;
         } else {
             buyTotalPrice = 0;
         }
@@ -169,7 +245,8 @@ class MainViewController: UIViewController, UITextFieldDelegate {
         print("loanPrice");
         
         if let text = sender.text, !text.isEmpty {
-            loanPrice = Int(text)!;
+            let replacedText = text.replacingOccurrences(of: ",", with: "")
+            loanPrice = Int(replacedText)!;
         } else {
             loanPrice = 0;
         }
