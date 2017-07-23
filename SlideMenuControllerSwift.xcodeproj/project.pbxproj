@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		096049491F24841700E14B20 /* GoogleMobileAds.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 096049441F24841700E14B20 /* GoogleMobileAds.framework */; };
+		0960494A1F24841700E14B20 /* FirebaseAnalytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 096049451F24841700E14B20 /* FirebaseAnalytics.framework */; settings = {ATTRIBUTES = (Required, ); }; };
+		0960494B1F24841700E14B20 /* FirebaseCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 096049461F24841700E14B20 /* FirebaseCore.framework */; };
+		0960494C1F24841700E14B20 /* FirebaseInstanceID.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 096049471F24841700E14B20 /* FirebaseInstanceID.framework */; };
+		0960494D1F24841700E14B20 /* GoogleToolboxForMac.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 096049481F24841700E14B20 /* GoogleToolboxForMac.framework */; };
+		096049501F24986800E14B20 /* CoreImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0960494F1F24986800E14B20 /* CoreImage.framework */; };
+		096049521F24C94B00E14B20 /* Interface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 096049511F24C94B00E14B20 /* Interface.swift */; };
 		0E75C5A31BE3CA9F00844634 /* SlideMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5BA8AA51A43E2EF00863FB9 /* SlideMenuController.swift */; };
 		0E75C5A61BE3CAFE00844634 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0E75C5A41BE3CAFE00844634 /* Info.plist */; };
 		0EB8EBFF1BE3CF3C00BC2A99 /* SlideMenuControllerSwift.h in Headers */ = {isa = PBXBuildFile; fileRef = 0E75C5A51BE3CAFE00844634 /* SlideMenuControllerSwift.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -53,6 +60,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		096049441F24841700E14B20 /* GoogleMobileAds.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleMobileAds.framework; sourceTree = "<group>"; };
+		096049451F24841700E14B20 /* FirebaseAnalytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FirebaseAnalytics.framework; sourceTree = "<group>"; };
+		096049461F24841700E14B20 /* FirebaseCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FirebaseCore.framework; sourceTree = "<group>"; };
+		096049471F24841700E14B20 /* FirebaseInstanceID.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FirebaseInstanceID.framework; sourceTree = "<group>"; };
+		096049481F24841700E14B20 /* GoogleToolboxForMac.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleToolboxForMac.framework; sourceTree = "<group>"; };
+		0960494F1F24986800E14B20 /* CoreImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreImage.framework; path = System/Library/Frameworks/CoreImage.framework; sourceTree = SDKROOT; };
+		096049511F24C94B00E14B20 /* Interface.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Interface.swift; sourceTree = "<group>"; };
 		0E75C5961BE3CA7900844634 /* SlideMenuControllerSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SlideMenuControllerSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		0E75C5A41BE3CAFE00844634 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = Source/Info.plist; sourceTree = "<group>"; };
 		0E75C5A51BE3CAFE00844634 /* SlideMenuControllerSwift.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SlideMenuControllerSwift.h; path = Source/SlideMenuControllerSwift.h; sourceTree = "<group>"; };
@@ -104,6 +118,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				096049501F24986800E14B20 /* CoreImage.framework in Frameworks */,
+				0960494A1F24841700E14B20 /* FirebaseAnalytics.framework in Frameworks */,
+				096049491F24841700E14B20 /* GoogleMobileAds.framework in Frameworks */,
+				0960494B1F24841700E14B20 /* FirebaseCore.framework in Frameworks */,
+				0960494C1F24841700E14B20 /* FirebaseInstanceID.framework in Frameworks */,
+				0960494D1F24841700E14B20 /* GoogleToolboxForMac.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -117,6 +137,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0960494E1F24986800E14B20 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				0960494F1F24986800E14B20 /* CoreImage.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		0E75C5A71BE3CB0D00844634 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
@@ -128,10 +156,16 @@
 		C539E6381A315E87003B7CC7 = {
 			isa = PBXGroup;
 			children = (
+				096049441F24841700E14B20 /* GoogleMobileAds.framework */,
+				096049451F24841700E14B20 /* FirebaseAnalytics.framework */,
+				096049461F24841700E14B20 /* FirebaseCore.framework */,
+				096049471F24841700E14B20 /* FirebaseInstanceID.framework */,
+				096049481F24841700E14B20 /* GoogleToolboxForMac.framework */,
 				C5BA8AA41A43E24C00863FB9 /* Source */,
 				C539E6431A315E87003B7CC7 /* SlideMenuControllerSwift */,
 				C539E65C1A315E87003B7CC7 /* SlideMenuControllerSwiftTests */,
 				C539E6421A315E87003B7CC7 /* Products */,
+				0960494E1F24986800E14B20 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -216,6 +250,7 @@
 				C5F179CF1BEB2CB500EEDD9A /* UIView.swift */,
 				C5F179D11BEB2FAF00EEDD9A /* UIColor.swift */,
 				C5BF6A8D1BF34A8B0064C18E /* UIApplication.swift */,
+				096049511F24C94B00E14B20 /* Interface.swift */,
 			);
 			name = Extension;
 			sourceTree = "<group>";
@@ -416,6 +451,7 @@
 				C539E66C1A316C78003B7CC7 /* LeftViewController.swift in Sources */,
 				C5BF6A821BEEF1A70064C18E /* DataTableViewCell.swift in Sources */,
 				C539E6471A315E87003B7CC7 /* AppDelegate.swift in Sources */,
+				096049521F24C94B00E14B20 /* Interface.swift in Sources */,
 				C5F179D21BEB2FAF00EEDD9A /* UIColor.swift in Sources */,
 				C5F179CE1BEB2A5900EEDD9A /* UIImage.swift in Sources */,
 				C5498C821BE8994F0076A7C5 /* UIImageView.swift in Sources */,
@@ -613,10 +649,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = YQ5H895XVK;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = SlideMenuControllerSwift/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = gkwak.earningcalculator;
+				PRODUCT_BUNDLE_IDENTIFIER = com.earningcalculator.ios;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -628,11 +668,15 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = YQ5H895XVK;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = SlideMenuControllerSwift/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				ONLY_ACTIVE_ARCH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = gkwak.earningcalculator;
+				PRODUCT_BUNDLE_IDENTIFIER = com.earningcalculator.ios;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

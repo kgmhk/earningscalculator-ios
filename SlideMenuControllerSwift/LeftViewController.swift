@@ -22,7 +22,7 @@ protocol LeftMenuProtocol : class {
 class LeftViewController : UIViewController, LeftMenuProtocol {
     
     @IBOutlet weak var tableView: UITableView!
-    var menus = ["임대수익률", "Swift", "Java", "Go", "NonMenu"]
+    var menus = ["임대수익률", "중개 수수료(복비계산)"]
     var mainViewController: UIViewController!
     var swiftViewController: UIViewController!
     var javaViewController: UIViewController!
@@ -42,16 +42,16 @@ class LeftViewController : UIViewController, LeftMenuProtocol {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let swiftViewController = storyboard.instantiateViewController(withIdentifier: "SwiftViewController") as! SwiftViewController
         self.swiftViewController = UINavigationController(rootViewController: swiftViewController)
-        
-        let javaViewController = storyboard.instantiateViewController(withIdentifier: "JavaViewController") as! JavaViewController
-        self.javaViewController = UINavigationController(rootViewController: javaViewController)
-        
-        let goViewController = storyboard.instantiateViewController(withIdentifier: "GoViewController") as! GoViewController
-        self.goViewController = UINavigationController(rootViewController: goViewController)
-        
-        let nonMenuController = storyboard.instantiateViewController(withIdentifier: "NonMenuController") as! NonMenuController
-        nonMenuController.delegate = self
-        self.nonMenuViewController = UINavigationController(rootViewController: nonMenuController)
+//        
+//        let javaViewController = storyboard.instantiateViewController(withIdentifier: "JavaViewController") as! JavaViewController
+//        self.javaViewController = UINavigationController(rootViewController: javaViewController)
+//        
+//        let goViewController = storyboard.instantiateViewController(withIdentifier: "GoViewController") as! GoViewController
+//        self.goViewController = UINavigationController(rootViewController: goViewController)
+//        
+//        let nonMenuController = storyboard.instantiateViewController(withIdentifier: "NonMenuController") as! NonMenuController
+//        nonMenuController.delegate = self
+//        self.nonMenuViewController = UINavigationController(rootViewController: nonMenuController)
         
         self.tableView.registerCellClass(BaseTableViewCell.self)
         
@@ -65,7 +65,7 @@ class LeftViewController : UIViewController, LeftMenuProtocol {
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        self.imageHeaderView.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: 160)
+        self.imageHeaderView.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: 100)
         self.view.layoutIfNeeded()
     }
     

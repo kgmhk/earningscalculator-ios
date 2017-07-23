@@ -1,6 +1,30 @@
 //  Created by gihyun on 07/.
+// 임대수익률
 
 import UIKit
+import GoogleMobileAds
+
+extension UIViewController {
+    
+    func showToast(message : String) {
+        
+        let toastLabel = UILabel(frame: CGRect(x: self.view.frame.size.width/2 - 150, y: self.view.frame.size.height-100, width: 300, height: 35))
+        toastLabel.backgroundColor = UIColor.black.withAlphaComponent(0.6)
+        toastLabel.textColor = UIColor.white
+        toastLabel.textAlignment = .center;
+        toastLabel.font = UIFont(name: "Montserrat-Light", size: 12.0)
+        toastLabel.text = message
+        toastLabel.alpha = 1.0
+        toastLabel.layer.cornerRadius = 10;
+        toastLabel.clipsToBounds  =  true
+        self.view.addSubview(toastLabel)
+        UIView.animate(withDuration: 3.0, delay: 0.1, options: .curveEaseOut, animations: {
+            toastLabel.alpha = 0.0
+        }, completion: {(isCompleted) in
+            toastLabel.removeFromSuperview()
+        })
+    }
+}
 
 extension String {
     
@@ -22,7 +46,7 @@ extension String {
         let regex = try! NSRegularExpression(pattern: "[^0-9]", options: .caseInsensitive)
         amountWithPrefix = regex.stringByReplacingMatches(in: amountWithPrefix, options: NSRegularExpression.MatchingOptions(rawValue: 0), range: NSMakeRange(0, self.characters.count), withTemplate: "")
         
-        let double = (amountWithPrefix as NSString).intValue
+        let double = (amountWithPrefix as NSString).doubleValue
         print("double", double);
         number = NSNumber(value: (double / 1))
         
@@ -41,15 +65,16 @@ extension String {
 
 class MainViewController: UIViewController, UITextFieldDelegate {
 
+    @IBOutlet weak var bannerView: GADBannerView!
     private static var YearlyRentRevenueContext = 0;
     private static var YearlyInterestPriceContext = 1;
     private static var YearlyPureRevenuePriceContext = 2;
     private static var RealInvestmentPriceContext = 3;
     
-    var depositPrice: Int = 0;
-    var monthlyPrice: Int = 0;
-    var buyTotalPrice: Int = 0;
-    var loanPrice: Int = 0;
+    var depositPrice: Double = 0;
+    var monthlyPrice: Double = 0;
+    var buyTotalPrice: Double = 0;
+    var loanPrice: Double = 0;
     var loanRate: Float = 0.0;
     let formatterToCurrency = NumberFormatter()
     let formatterToNumber = NumberFormatter()
@@ -94,6 +119,11 @@ class MainViewController: UIViewController, UITextFieldDelegate {
         depositTextField.addTarget(self, action: #selector(myDepositFieldDidChange), for: .editingChanged)
         buyTotalPriceTextField.addTarget(self, action: #selector(myBuyTotalFieldDidChange), for: .editingChanged)
         loanPriceTextField.addTarget(self, action: #selector(myLoanPriceFieldDidChange), for: .editingChanged)
+        
+        // admob banner ads
+        bannerView.adUnitID = "ca-app-pub-2778546304304506/2899286231"
+        bannerView.rootViewController = self
+        bannerView.load(GADRequest())
     }
     
     func myMonthlyFieldDidChange(_ textField: UITextField) {
@@ -181,7 +211,7 @@ class MainViewController: UIViewController, UITextFieldDelegate {
     
         if let text = sender.text, !text.isEmpty {
             let replacedText = text.replacingOccurrences(of: ",", with: "")
-            monthlyPrice = Int(replacedText)!;
+            monthlyPrice = Double(replacedText)!;
         } else {
             monthlyPrice = 0;
         }
@@ -206,7 +236,7 @@ class MainViewController: UIViewController, UITextFieldDelegate {
         
         if let text = sender.text, !text.isEmpty {
             let replacedText = text.replacingOccurrences(of: ",", with: "")
-            depositPrice = Int(replacedText)!;
+            depositPrice = Double(replacedText)!;
         } else {
             depositPrice = 0;
         }
@@ -228,7 +258,7 @@ class MainViewController: UIViewController, UITextFieldDelegate {
         
         if let text = sender.text, !text.isEmpty {
             let replacedText = text.replacingOccurrences(of: ",", with: "")
-            buyTotalPrice = Int(replacedText)!;
+            buyTotalPrice = Double(replacedText)!;
         } else {
             buyTotalPrice = 0;
         }
@@ -246,7 +276,7 @@ class MainViewController: UIViewController, UITextFieldDelegate {
         
         if let text = sender.text, !text.isEmpty {
             let replacedText = text.replacingOccurrences(of: ",", with: "")
-            loanPrice = Int(replacedText)!;
+            loanPrice = Double(replacedText)!;
         } else {
             loanPrice = 0;
         }
