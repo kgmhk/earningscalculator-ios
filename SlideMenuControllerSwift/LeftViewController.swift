@@ -22,7 +22,7 @@ protocol LeftMenuProtocol : class {
 class LeftViewController : UIViewController, LeftMenuProtocol {
     
     @IBOutlet weak var tableView: UITableView!
-    var menus = ["임대수익률", "중개 수수료(복비계산)"]
+    var menus = ["임대수익률", "중개 수수료(복비계산)", "평형 계산"]
     var mainViewController: UIViewController!
     var swiftViewController: UIViewController!
     var javaViewController: UIViewController!
@@ -40,12 +40,11 @@ class LeftViewController : UIViewController, LeftMenuProtocol {
         self.tableView.separatorColor = UIColor(red: 224/255, green: 224/255, blue: 224/255, alpha: 1.0)
         
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let swiftViewController = storyboard.instantiateViewController(withIdentifier: "SwiftViewController") as! SwiftViewController
-        self.swiftViewController = UINavigationController(rootViewController: swiftViewController)
-//        
-//        let javaViewController = storyboard.instantiateViewController(withIdentifier: "JavaViewController") as! JavaViewController
-//        self.javaViewController = UINavigationController(rootViewController: javaViewController)
-//        
+        let CommissionFeeController = storyboard.instantiateViewController(withIdentifier: "CommissionFeeController") as! CommissionFeeController
+        self.swiftViewController = UINavigationController(rootViewController: CommissionFeeController)
+        let SquareMeterController = storyboard.instantiateViewController(withIdentifier: "SquareMeterController") as! SquareMeterController
+        self.javaViewController = UINavigationController(rootViewController: SquareMeterController)
+//
 //        let goViewController = storyboard.instantiateViewController(withIdentifier: "GoViewController") as! GoViewController
 //        self.goViewController = UINavigationController(rootViewController: goViewController)
 //        

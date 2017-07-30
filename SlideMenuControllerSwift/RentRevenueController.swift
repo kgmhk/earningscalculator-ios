@@ -39,8 +39,6 @@ extension String {
         
         var amountWithPrefix = self
         
-        print("amountWithPrefix" , amountWithPrefix);
-        
         
         // remove from String: "$", ".", ","
         let regex = try! NSRegularExpression(pattern: "[^0-9]", options: .caseInsensitive)
@@ -63,7 +61,7 @@ extension String {
     }
 }
 
-class MainViewController: UIViewController, UITextFieldDelegate {
+class RentRevenueController: UIViewController, UITextFieldDelegate {
 
     @IBOutlet weak var bannerView: GADBannerView!
     private static var YearlyRentRevenueContext = 0;
@@ -110,10 +108,10 @@ class MainViewController: UIViewController, UITextFieldDelegate {
         formatterToNumber.currencySymbol = ""
         formatterToNumber.minimumFractionDigits = 0
         
-        yearlyRentRevenuePriceResult.addObserver(self, forKeyPath: "text", options: [.old, .new], context: &MainViewController.YearlyRentRevenueContext)
-        yearlyInterestPriceResult.addObserver(self, forKeyPath: "text", options: [.old, .new], context: &MainViewController.YearlyInterestPriceContext);
-        yearlyPureRevenuePriceResult.addObserver(self, forKeyPath: "text", options: [.old, .new], context: &MainViewController.YearlyPureRevenuePriceContext)
-        realInvestmentPriceResult.addObserver(self, forKeyPath: "text", options: [.old, .new], context: &MainViewController.RealInvestmentPriceContext)
+        yearlyRentRevenuePriceResult.addObserver(self, forKeyPath: "text", options: [.old, .new], context: &RentRevenueController.YearlyRentRevenueContext)
+        yearlyInterestPriceResult.addObserver(self, forKeyPath: "text", options: [.old, .new], context: &RentRevenueController.YearlyInterestPriceContext);
+        yearlyPureRevenuePriceResult.addObserver(self, forKeyPath: "text", options: [.old, .new], context: &RentRevenueController.YearlyPureRevenuePriceContext)
+        realInvestmentPriceResult.addObserver(self, forKeyPath: "text", options: [.old, .new], context: &RentRevenueController.RealInvestmentPriceContext)
         
         monthlyTextField.addTarget(self, action: #selector(myMonthlyFieldDidChange), for: .editingChanged)
         depositTextField.addTarget(self, action: #selector(myDepositFieldDidChange), for: .editingChanged)
@@ -232,8 +230,6 @@ class MainViewController: UIViewController, UITextFieldDelegate {
     // 임대 보증금
     @IBAction func depositTextFieldChanged(_ sender: UITextField) {
         
-        print("depositPrice");
-        
         if let text = sender.text, !text.isEmpty {
             let replacedText = text.replacingOccurrences(of: ",", with: "")
             depositPrice = Double(replacedText)!;
@@ -245,16 +241,17 @@ class MainViewController: UIViewController, UITextFieldDelegate {
         let convertedcalPropertyPriceResult = calPropertyPriceResult as NSNumber
         let formatedText = formatterToCurrency.string(from: convertedcalPropertyPriceResult)!
         
+        let calYearlyInterestPriceResult = buyTotalPrice - depositPrice - loanPrice
+        let convertedcalYearlyInterestPriceResult = calYearlyInterestPriceResult as NSNumber
+        let formatedCalYearlyInterestPriceText = formatterToCurrency.string(from: convertedcalYearlyInterestPriceResult)!
+        
         propertyPriceResult.text = String(formatedText)
         
-        print("monthlyPrice : ",monthlyPrice);
-        print("depositPrice : ",depositPrice);
-        
+        realInvestmentPriceResult.text = String(formatedCalYearlyInterestPriceText)
     }
     
     // 분양가
     @IBAction func buyTotalPriceTextFieldChanged(_ sender: UITextField) {
-        print("buyTotalPrice");
         
         if let text = sender.text, !text.isEmpty {
             let replacedText = text.replacingOccurrences(of: ",", with: "")
@@ -302,7 +299,7 @@ class MainViewController: UIViewController, UITextFieldDelegate {
         if let text = sender.text, !text.isEmpty {
             loanRate = Float(text)!;
         } else {
-            loanRate = 0;
+            loanRate = 0.0;
         }
         
         let yearlyRevenueCalResult = (Float(loanPrice) * loanRate) / 100;
@@ -313,47 +310,46 @@ class MainViewController: UIViewController, UITextFieldDelegate {
     }
 
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
-        if context == &MainViewController.YearlyRentRevenueContext {
+        if context == &RentRevenueController.YearlyRentRevenueContext {
             let ChangedYearlyRentRevenue = formatterToNumber.number(from: change?[.newKey] as! String);
-            let yearlyInterestPrice = Float(yearlyInterestPriceResult.text!) ?? 0.0;
-            let yearlyRentRevenuePrice = Float(ChangedYearlyRentRevenue!) ;
+            let yearlyInterestPrice = yearlyInterestPriceResult.text ?? "0.0";
+            let changedYearlyInterestPriceText = formatterToNumber.number(from: yearlyInterestPrice)
             
-            let yearlyPureRevenueCalResult = yearlyRentRevenuePrice - yearlyInterestPrice
+            let yearlyPureRevenueCalResult = Double(ChangedYearlyRentRevenue!) - Double(changedYearlyInterestPriceText!)
             let convertedYearlyPureRevenue = yearlyPureRevenueCalResult as NSNumber;
             let formatedYearlyPureRevenueResult = formatterToCurrency.string(from: convertedYearlyPureRevenue)
             
             yearlyPureRevenuePriceResult.text = formatedYearlyPureRevenueResult // 연순수익
-        } else if context == &MainViewController.YearlyInterestPriceContext {
+        } else if context == &RentRevenueController.YearlyInterestPriceContext {
             let yearlyRentRevenueText = yearlyRentRevenuePriceResult.text ?? "0.0";
             let yearlyInterestText = yearlyInterestPriceResult.text ?? "0.0";
             
             let changedYearlyRentRevenue = formatterToNumber.number(from: yearlyRentRevenueText);
             let changedYearlyInterest = formatterToNumber.number(from: yearlyInterestText);
             
-            let yearlyPureRentRevenueCalResult = Float(changedYearlyRentRevenue!) - Float(changedYearlyInterest!);
-            let monthlyInterest = Float(changedYearlyInterest!) / 12;
+            let yearlyPureRentRevenueCalResult = Double(changedYearlyRentRevenue!) - Double(changedYearlyInterest!);
+            let monthlyInterest = Double(changedYearlyInterest!) / 12;
             
-            yearlyPureRevenuePriceResult.text = formatterToCurrency.string(from: yearlyPureRentRevenueCalResult as NSNumber);
             monthlyInterestPriceResult.text = formatterToCurrency.string(from: monthlyInterest as NSNumber);
-        } else if context == &MainViewController.YearlyPureRevenuePriceContext {
+            yearlyPureRevenuePriceResult.text = formatterToCurrency.string(from: yearlyPureRentRevenueCalResult as NSNumber);
+            
+        } else if context == &RentRevenueController.YearlyPureRevenuePriceContext {
             let yearlyPureRevenueText = yearlyPureRevenuePriceResult.text ?? "0.0";
             let realInvestPriceText = realInvestmentPriceResult.text ?? "0.0";
             
             let changedYearlyPureRevenueText = formatterToNumber.number(from: yearlyPureRevenueText)
             let changedRealInvestPriceText = formatterToNumber.number(from: realInvestPriceText)
-            
             let monthlyPureRevenuePriceCalResult = Float(changedYearlyPureRevenueText!) / 12;
             let rentRateCalResult = (Float(changedYearlyPureRevenueText!) / Float(changedRealInvestPriceText!)) * 100
-            
             monthlyPureRevenuePriceResult.text = formatterToCurrency.string(from: monthlyPureRevenuePriceCalResult as NSNumber)
             rentRevenueRatePriceResult.text = String(rentRateCalResult)
-        } else if context == &MainViewController.RealInvestmentPriceContext {
+        } else if context == &RentRevenueController.RealInvestmentPriceContext {
             let yearlyPureRevenueText = formatterToNumber.number(from: yearlyPureRevenuePriceResult.text ?? "0.0");
             let realInvestPriceText = formatterToNumber.number(from: realInvestmentPriceResult.text ?? "0.0");
             
             let rentRevenueRateCalResult = (Float(yearlyPureRevenueText!) / Float(realInvestPriceText!)) * 100
             
-            rentRevenueRatePriceResult.text = formatterToCurrency.string(from: rentRevenueRateCalResult as NSNumber);
+            rentRevenueRatePriceResult.text = String(rentRevenueRateCalResult);
         }
         
     }
@@ -374,7 +370,7 @@ class MainViewController: UIViewController, UITextFieldDelegate {
 
 }
 
-extension MainViewController : SlideMenuControllerDelegate {
+extension RentRevenueController : SlideMenuControllerDelegate {
     
     func leftWillOpen() {
         print("SlideMenuControllerDelegate: leftWillOpen")

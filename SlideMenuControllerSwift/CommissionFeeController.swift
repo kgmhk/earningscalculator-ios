@@ -6,7 +6,7 @@ import GoogleMobileAds
 
 weak var dealPriceResult: UILabel!
 
-class SwiftViewController: UIViewController, UITextFieldDelegate {
+class CommissionFeeController: UIViewController, UITextFieldDelegate {
     private var selectStatus: CommissionSelecteStatus = CommissionSelecteStatus.Deal;
     
     private var dealPrice: Double = 0;
