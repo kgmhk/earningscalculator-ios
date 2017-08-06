@@ -15,7 +15,7 @@ class ExSlideMenuController : SlideMenuController {
             if vc is RentRevenueController ||
             vc is CommissionFeeController ||
             vc is SquareMeterController ||
-            vc is GoViewController {
+            vc is InterestController {
                 return true
             }
         }

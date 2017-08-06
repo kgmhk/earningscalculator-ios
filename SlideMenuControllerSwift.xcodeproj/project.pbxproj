@@ -14,6 +14,7 @@
 		0960494D1F24841700E14B20 /* GoogleToolboxForMac.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 096049481F24841700E14B20 /* GoogleToolboxForMac.framework */; };
 		096049501F24986800E14B20 /* CoreImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0960494F1F24986800E14B20 /* CoreImage.framework */; };
 		096049521F24C94B00E14B20 /* Interface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 096049511F24C94B00E14B20 /* Interface.swift */; };
+		09721BDA1F3736DA00D3633D /* CustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09721BD91F3736DA00D3633D /* CustomCell.swift */; };
 		0E75C5A31BE3CA9F00844634 /* SlideMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5BA8AA51A43E2EF00863FB9 /* SlideMenuController.swift */; };
 		0E75C5A61BE3CAFE00844634 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0E75C5A41BE3CAFE00844634 /* Info.plist */; };
 		0EB8EBFF1BE3CF3C00BC2A99 /* SlideMenuControllerSwift.h in Headers */ = {isa = PBXBuildFile; fileRef = 0E75C5A51BE3CAFE00844634 /* SlideMenuControllerSwift.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -31,7 +32,7 @@
 		C5BA8AA61A43E2EF00863FB9 /* SlideMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5BA8AA51A43E2EF00863FB9 /* SlideMenuController.swift */; };
 		C5BD39DA1A6CD12300D0AF95 /* CommissionFeeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5BD39D91A6CD12300D0AF95 /* CommissionFeeController.swift */; };
 		C5BD39DC1A6CD15700D0AF95 /* SquareMeterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5BD39DB1A6CD15700D0AF95 /* SquareMeterController.swift */; };
-		C5BD39DE1A6CD17B00D0AF95 /* GoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5BD39DD1A6CD17B00D0AF95 /* GoViewController.swift */; };
+		C5BD39DE1A6CD17B00D0AF95 /* InterestController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5BD39DD1A6CD17B00D0AF95 /* InterestController.swift */; };
 		C5BD39E01A6CDC8100D0AF95 /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5BD39DF1A6CDC8100D0AF95 /* UIViewController.swift */; };
 		C5BF6A821BEEF1A70064C18E /* DataTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5BF6A811BEEF1A70064C18E /* DataTableViewCell.swift */; };
 		C5BF6A841BEEF1E70064C18E /* DataTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C5BF6A831BEEF1E70064C18E /* DataTableViewCell.xib */; };
@@ -66,6 +67,7 @@
 		096049481F24841700E14B20 /* GoogleToolboxForMac.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleToolboxForMac.framework; sourceTree = "<group>"; };
 		0960494F1F24986800E14B20 /* CoreImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreImage.framework; path = System/Library/Frameworks/CoreImage.framework; sourceTree = SDKROOT; };
 		096049511F24C94B00E14B20 /* Interface.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Interface.swift; sourceTree = "<group>"; };
+		09721BD91F3736DA00D3633D /* CustomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomCell.swift; sourceTree = "<group>"; };
 		0E75C5961BE3CA7900844634 /* SlideMenuControllerSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SlideMenuControllerSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		0E75C5A41BE3CAFE00844634 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = Source/Info.plist; sourceTree = "<group>"; };
 		0E75C5A51BE3CAFE00844634 /* SlideMenuControllerSwift.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SlideMenuControllerSwift.h; path = Source/SlideMenuControllerSwift.h; sourceTree = "<group>"; };
@@ -87,7 +89,7 @@
 		C5BA8AA51A43E2EF00863FB9 /* SlideMenuController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SlideMenuController.swift; path = Source/SlideMenuController.swift; sourceTree = "<group>"; };
 		C5BD39D91A6CD12300D0AF95 /* CommissionFeeController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommissionFeeController.swift; sourceTree = "<group>"; };
 		C5BD39DB1A6CD15700D0AF95 /* SquareMeterController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SquareMeterController.swift; sourceTree = "<group>"; };
-		C5BD39DD1A6CD17B00D0AF95 /* GoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoViewController.swift; sourceTree = "<group>"; };
+		C5BD39DD1A6CD17B00D0AF95 /* InterestController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InterestController.swift; sourceTree = "<group>"; };
 		C5BD39DF1A6CDC8100D0AF95 /* UIViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
 		C5BF6A811BEEF1A70064C18E /* DataTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataTableViewCell.swift; sourceTree = "<group>"; };
 		C5BF6A831BEEF1E70064C18E /* DataTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DataTableViewCell.xib; sourceTree = "<group>"; };
@@ -223,6 +225,7 @@
 				C5C1CE5C1A70F27500B6E411 /* BaseTableViewCell.swift */,
 				C5BF6A811BEEF1A70064C18E /* DataTableViewCell.swift */,
 				C5BF6A831BEEF1E70064C18E /* DataTableViewCell.xib */,
+				09721BD91F3736DA00D3633D /* CustomCell.swift */,
 			);
 			name = TableViewCell;
 			sourceTree = "<group>";
@@ -260,7 +263,7 @@
 				C539E66D1A316F5F003B7CC7 /* RightViewController.swift */,
 				C5BD39D91A6CD12300D0AF95 /* CommissionFeeController.swift */,
 				C5BD39DB1A6CD15700D0AF95 /* SquareMeterController.swift */,
-				C5BD39DD1A6CD17B00D0AF95 /* GoViewController.swift */,
+				C5BD39DD1A6CD17B00D0AF95 /* InterestController.swift */,
 				C5C1CE5A1A70DADF00B6E411 /* NonMenuController.swift */,
 				C539E64D1A315E87003B7CC7 /* Main.storyboard */,
 				C5BF6A851BEF4C080064C18E /* SubContentsViewController.swift */,
@@ -439,7 +442,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C5BF6A8E1BF34A8B0064C18E /* UIApplication.swift in Sources */,
-				C5BD39DE1A6CD17B00D0AF95 /* GoViewController.swift in Sources */,
+				C5BD39DE1A6CD17B00D0AF95 /* InterestController.swift in Sources */,
 				C539E64C1A315E87003B7CC7 /* RentRevenueController.swift in Sources */,
 				C5BD39E01A6CDC8100D0AF95 /* UIViewController.swift in Sources */,
 				C5C1CE611A70F3B600B6E411 /* UITableViewExtension.swift in Sources */,
@@ -460,6 +463,7 @@
 				C539E66E1A316F5F003B7CC7 /* RightViewController.swift in Sources */,
 				C5C1CE5F1A70F2FD00B6E411 /* String.swift in Sources */,
 				C5F179D01BEB2CB500EEDD9A /* UIView.swift in Sources */,
+				09721BDA1F3736DA00D3633D /* CustomCell.swift in Sources */,
 				C5BD39DA1A6CD12300D0AF95 /* CommissionFeeController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

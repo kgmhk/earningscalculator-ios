@@ -22,11 +22,11 @@ protocol LeftMenuProtocol : class {
 class LeftViewController : UIViewController, LeftMenuProtocol {
     
     @IBOutlet weak var tableView: UITableView!
-    var menus = ["임대수익률", "중개 수수료(복비계산)", "평형 계산"]
+    var menus = ["임대수익률", "중개 수수료(복비계산)", "평형 계산", "대출 이자"]
     var mainViewController: UIViewController!
-    var swiftViewController: UIViewController!
-    var javaViewController: UIViewController!
-    var goViewController: UIViewController!
+    var CommissionFeeController: UIViewController!
+    var SquareMeterController: UIViewController!
+    var InterestController: UIViewController!
     var nonMenuViewController: UIViewController!
     var imageHeaderView: ImageHeaderView!
     
@@ -41,13 +41,13 @@ class LeftViewController : UIViewController, LeftMenuProtocol {
         
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let CommissionFeeController = storyboard.instantiateViewController(withIdentifier: "CommissionFeeController") as! CommissionFeeController
-        self.swiftViewController = UINavigationController(rootViewController: CommissionFeeController)
+        self.CommissionFeeController = UINavigationController(rootViewController: CommissionFeeController)
         let SquareMeterController = storyboard.instantiateViewController(withIdentifier: "SquareMeterController") as! SquareMeterController
-        self.javaViewController = UINavigationController(rootViewController: SquareMeterController)
+        self.SquareMeterController = UINavigationController(rootViewController: SquareMeterController)
 //
-//        let goViewController = storyboard.instantiateViewController(withIdentifier: "GoViewController") as! GoViewController
-//        self.goViewController = UINavigationController(rootViewController: goViewController)
-//        
+        let interestController = storyboard.instantiateViewController(withIdentifier: "InterestController") as! InterestController
+        self.InterestController = UINavigationController(rootViewController: interestController)
+//
 //        let nonMenuController = storyboard.instantiateViewController(withIdentifier: "NonMenuController") as! NonMenuController
 //        nonMenuController.delegate = self
 //        self.nonMenuViewController = UINavigationController(rootViewController: nonMenuController)
@@ -73,11 +73,11 @@ class LeftViewController : UIViewController, LeftMenuProtocol {
         case .main:
             self.slideMenuController()?.changeMainViewController(self.mainViewController, close: true)
         case .swift:
-            self.slideMenuController()?.changeMainViewController(self.swiftViewController, close: true)
+            self.slideMenuController()?.changeMainViewController(self.CommissionFeeController, close: true)
         case .java:
-            self.slideMenuController()?.changeMainViewController(self.javaViewController, close: true)
+            self.slideMenuController()?.changeMainViewController(self.SquareMeterController, close: true)
         case .go:
-            self.slideMenuController()?.changeMainViewController(self.goViewController, close: true)
+            self.slideMenuController()?.changeMainViewController(self.InterestController, close: true)
         case .nonMenu:
             self.slideMenuController()?.changeMainViewController(self.nonMenuViewController, close: true)
         }
