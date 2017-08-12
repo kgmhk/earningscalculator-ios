@@ -195,6 +195,12 @@ class RentRevenueController: UIViewController, UITextFieldDelegate {
                 print(currentText)
                 return prospectiveText.characters.count <= 14
             case loanRateTextField:
+                let countdots = (textField.text?.components(separatedBy:".").count)! - 1
+                
+                if countdots > 0 && string == "."
+                {
+                    return false
+                }
                 return prospectiveText.characters.count <= 10
             default:
                 return true

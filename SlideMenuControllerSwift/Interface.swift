@@ -6,3 +6,9 @@ enum CommissionSelecteStatus: Int {
     case Lease
     case Month
 }
+
+enum InterestSelecteStatus: Int {
+    case originalPriceEqual = 1
+    case principalAndInterest
+    case expiryDateOfPrincipalMaturity
+}
