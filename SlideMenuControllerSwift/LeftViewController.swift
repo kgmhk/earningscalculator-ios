@@ -22,12 +22,13 @@ protocol LeftMenuProtocol : class {
 class LeftViewController : UIViewController, LeftMenuProtocol {
     
     @IBOutlet weak var tableView: UITableView!
-    var menus = ["임대수익률", "중개 수수료(복비계산)", "평형 계산", "대출 이자"]
+    var menus = ["임대수익률", "중개 수수료(복비계산)", "평형 계산", "대출 이자", "청약 가점"]
     var mainViewController: UIViewController!
     var CommissionFeeController: UIViewController!
     var SquareMeterController: UIViewController!
     var InterestController: UIViewController!
     var nonMenuViewController: UIViewController!
+    var SubscriptionPlusController: UIViewController!
     var imageHeaderView: ImageHeaderView!
     
     required init?(coder aDecoder: NSCoder) {
@@ -47,6 +48,9 @@ class LeftViewController : UIViewController, LeftMenuProtocol {
 //
         let interestController = storyboard.instantiateViewController(withIdentifier: "InterestController") as! InterestController
         self.InterestController = UINavigationController(rootViewController: interestController)
+        
+        let SubscriptionPlusController = storyboard.instantiateViewController(withIdentifier: "SubscriptionPlusController") as! SubscriptionPlusController
+        self.SubscriptionPlusController = UINavigationController(rootViewController: SubscriptionPlusController)
 //
 //        let nonMenuController = storyboard.instantiateViewController(withIdentifier: "NonMenuController") as! NonMenuController
 //        nonMenuController.delegate = self
@@ -79,7 +83,7 @@ class LeftViewController : UIViewController, LeftMenuProtocol {
         case .go:
             self.slideMenuController()?.changeMainViewController(self.InterestController, close: true)
         case .nonMenu:
-            self.slideMenuController()?.changeMainViewController(self.nonMenuViewController, close: true)
+            self.slideMenuController()?.changeMainViewController(self.SubscriptionPlusController, close: true)
         }
     }
 }

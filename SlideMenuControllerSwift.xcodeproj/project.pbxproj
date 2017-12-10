@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		090895031FDCFE9900203897 /* SubscriptionPlusController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 090895021FDCFE9900203897 /* SubscriptionPlusController.swift */; };
 		096049491F24841700E14B20 /* GoogleMobileAds.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 096049441F24841700E14B20 /* GoogleMobileAds.framework */; };
 		0960494A1F24841700E14B20 /* FirebaseAnalytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 096049451F24841700E14B20 /* FirebaseAnalytics.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		0960494B1F24841700E14B20 /* FirebaseCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 096049461F24841700E14B20 /* FirebaseCore.framework */; };
@@ -60,6 +61,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		090895021FDCFE9900203897 /* SubscriptionPlusController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionPlusController.swift; sourceTree = "<group>"; };
 		096049441F24841700E14B20 /* GoogleMobileAds.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleMobileAds.framework; sourceTree = "<group>"; };
 		096049451F24841700E14B20 /* FirebaseAnalytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FirebaseAnalytics.framework; sourceTree = "<group>"; };
 		096049461F24841700E14B20 /* FirebaseCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FirebaseCore.framework; sourceTree = "<group>"; };
@@ -269,6 +271,7 @@
 				C5BF6A851BEF4C080064C18E /* SubContentsViewController.swift */,
 				C5BF6A891BF3335D0064C18E /* SubContentsViewController.storyboard */,
 				C5BF6A8B1BF340020064C18E /* ExSlideMenuController.swift */,
+				090895021FDCFE9900203897 /* SubscriptionPlusController.swift */,
 			);
 			name = ViewController;
 			sourceTree = "<group>";
@@ -463,6 +466,7 @@
 				C539E66E1A316F5F003B7CC7 /* RightViewController.swift in Sources */,
 				C5C1CE5F1A70F2FD00B6E411 /* String.swift in Sources */,
 				C5F179D01BEB2CB500EEDD9A /* UIView.swift in Sources */,
+				090895031FDCFE9900203897 /* SubscriptionPlusController.swift in Sources */,
 				09721BDA1F3736DA00D3633D /* CustomCell.swift in Sources */,
 				C5BD39DA1A6CD12300D0AF95 /* CommissionFeeController.swift in Sources */,
 			);

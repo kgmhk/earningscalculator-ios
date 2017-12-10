@@ -37,6 +37,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.createMenuView()
         
         GADMobileAds.configure(withApplicationID: "ca-app-pub-2778546304304506~9506903098")
+        
         return true
     }
     

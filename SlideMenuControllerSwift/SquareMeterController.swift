@@ -23,7 +23,12 @@ class SquareMeterController: UIViewController, UITextFieldDelegate {
         // admob banner ads
         bannerView.adUnitID = "ca-app-pub-2778546304304506/2899286231"
         bannerView.rootViewController = self
-        bannerView.load(GADRequest())
+        
+        let request = GADRequest()
+        request.testDevices = [ kGADSimulatorID,                       // All simulators
+            "2077ef9a63d2b398840261c8221a0c9b" ];  // Sample device ID
+        
+        bannerView.load(request)
     }
  
     @IBAction func meterToSquareChanged(_ sender: UITextField) {
