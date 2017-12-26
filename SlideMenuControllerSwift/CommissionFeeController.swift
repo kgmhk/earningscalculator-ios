@@ -34,6 +34,18 @@ class CommissionFeeController: UIViewController, UITextFieldDelegate {
         super.viewDidLoad()
         initializeTextFields()
         
+        // add done button
+        let keyboardToolbar = UIToolbar()
+        keyboardToolbar.sizeToFit()
+        let flexBarButton = UIBarButtonItem(barButtonSystemItem: .flexibleSpace,
+                                            target: nil, action: nil)
+        let doneBarButton = UIBarButtonItem(barButtonSystemItem: .done,
+                                            target: view, action: #selector(UIView.endEditing(_:)))
+        keyboardToolbar.items = [flexBarButton, doneBarButton]
+        commissionMonthlyPriceTextField.inputAccessoryView = keyboardToolbar
+        depositPriceTextField.inputAccessoryView = keyboardToolbar
+        dealPriceTextField.inputAccessoryView = keyboardToolbar
+        
         formatterToCurrency.numberStyle = .currency
         formatterToCurrency.currencySymbol = ""
         formatterToCurrency.minimumFractionDigits = 0
@@ -325,8 +337,8 @@ class CommissionFeeController: UIViewController, UITextFieldDelegate {
         bannerView.rootViewController = self
         
         let request = GADRequest()
-        request.testDevices = [ kGADSimulatorID,                       // All simulators
-            "2077ef9a63d2b398840261c8221a0c9b" ];  // Sample device ID
+//        request.testDevices = [ kGADSimulatorID,                       // All simulators
+//            "2077ef9a63d2b398840261c8221a0c9b" ];  // Sample device ID
         
         bannerView.load(request)
     }

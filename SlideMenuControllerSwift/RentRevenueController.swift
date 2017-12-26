@@ -100,6 +100,20 @@ class RentRevenueController: UIViewController, UITextFieldDelegate {
         initializeTextFields()
         self.title = "임대수익률"
         
+        // add done button
+        let keyboardToolbar = UIToolbar()
+        keyboardToolbar.sizeToFit()
+        let flexBarButton = UIBarButtonItem(barButtonSystemItem: .flexibleSpace,
+                                            target: nil, action: nil)
+        let doneBarButton = UIBarButtonItem(barButtonSystemItem: .done,
+                                            target: view, action: #selector(UIView.endEditing(_:)))
+        keyboardToolbar.items = [flexBarButton, doneBarButton]
+        monthlyTextField.inputAccessoryView = keyboardToolbar
+        depositTextField.inputAccessoryView = keyboardToolbar
+        buyTotalPriceTextField.inputAccessoryView = keyboardToolbar
+        loanPriceTextField.inputAccessoryView = keyboardToolbar
+        loanRateTextField.inputAccessoryView = keyboardToolbar
+        
         formatterToCurrency.numberStyle = .currency
         formatterToCurrency.currencySymbol = ""
         formatterToCurrency.minimumFractionDigits = 0
@@ -124,8 +138,8 @@ class RentRevenueController: UIViewController, UITextFieldDelegate {
         
         //test
         let request = GADRequest()
-        request.testDevices = [ kGADSimulatorID,                       // All simulators
-            "2077ef9a63d2b398840261c8221a0c9b" ];  // Sample device ID
+//        request.testDevices = [ kGADSimulatorID,                       // All simulators
+//            "2077ef9a63d2b398840261c8221a0c9b" ];  // Sample device ID
         
         bannerView.load(request)
     }

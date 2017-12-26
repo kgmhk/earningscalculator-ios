@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -379,7 +380,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <color key="backgroundColor" red="0.996815025806427" green="0.99205118417739868" blue="0.99196261167526245" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="trailing" secondItem="7Fc-ha-wac" secondAttribute="trailing" constant="20" id="1P5-US-TFl"/>
                                             <constraint firstItem="ksT-HZ-7yO" firstAttribute="top" secondItem="ZJh-kS-j8u" secondAttribute="bottom" constant="10" id="27b-UC-0pr"/>
@@ -1508,7 +1509,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2AB-fE-eJz">
-                                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="1100"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="청약 가점 계산" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dVm-hO-PP2">
                                                 <rect key="frame" x="20" y="20" width="113" height="24"/>
@@ -1517,67 +1518,70 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="bi6-Qt-Q7f">
-                                                <rect key="frame" x="20" y="64" width="560" height="130"/>
+                                                <rect key="frame" x="20" y="64" width="560" height="200"/>
                                                 <subviews>
-                                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="Na1-2w-CGe">
-                                                        <rect key="frame" x="0.0" y="0.0" width="560" height="130"/>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="Na1-2w-CGe">
+                                                        <rect key="frame" x="0.0" y="0.0" width="560" height="200"/>
                                                         <subviews>
                                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="hht-5R-HAd">
-                                                                <rect key="frame" x="0.0" y="0.0" width="122.5" height="130"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="203.5" height="200"/>
                                                                 <subviews>
-                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="주택소유여부" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AgD-vV-Rwi">
-                                                                        <rect key="frame" x="0.0" y="0.0" width="122.5" height="26.5"/>
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="주택소유여부" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AgD-vV-Rwi">
+                                                                        <rect key="frame" x="0.0" y="0.0" width="203.5" height="44"/>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                         <nil key="textColor"/>
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="무주택기간" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JJU-TY-5Oh">
-                                                                        <rect key="frame" x="0.0" y="34.5" width="122.5" height="26.5"/>
+                                                                        <rect key="frame" x="0.0" y="52" width="203.5" height="44"/>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                         <nil key="textColor"/>
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="부양가족수" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="40V-2T-9Zw">
-                                                                        <rect key="frame" x="0.0" y="69" width="122.5" height="26.5"/>
+                                                                        <rect key="frame" x="0.0" y="104" width="203.5" height="44"/>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                         <nil key="textColor"/>
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
-                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="청약통장 가입기간" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z6L-e9-THi">
-                                                                        <rect key="frame" x="0.0" y="103.5" width="122.5" height="26.5"/>
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="청약통장 가입기간" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="Z6L-e9-THi">
+                                                                        <rect key="frame" x="0.0" y="156" width="203.5" height="44"/>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                         <nil key="textColor"/>
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
                                                                 </subviews>
                                                             </stackView>
-                                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="aM0-ha-Iqd">
-                                                                <rect key="frame" x="127.5" y="0.0" width="432.5" height="130"/>
+                                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="aM0-ha-Iqd">
+                                                                <rect key="frame" x="211.5" y="0.0" width="348.5" height="200"/>
                                                                 <subviews>
                                                                     <segmentedControl opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="749" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="dPs-Cu-8xH">
-                                                                        <rect key="frame" x="0.0" y="0.0" width="432.5" height="27.5"/>
+                                                                        <rect key="frame" x="0.0" y="0.0" width="348.5" height="47.5"/>
                                                                         <segments>
                                                                             <segment title="예 (유주택자)"/>
                                                                             <segment title="아니오 (무주택자)"/>
                                                                         </segments>
+                                                                        <connections>
+                                                                            <action selector="indexChanged:" destination="9by-S7-Kqx" eventType="valueChanged" id="M3q-dj-ew8"/>
+                                                                        </connections>
                                                                     </segmentedControl>
-                                                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="right" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="nGX-mj-Aab">
-                                                                        <rect key="frame" x="0.0" y="34.5" width="432.5" height="26.5"/>
+                                                                    <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="무주택자만 해당 합니다." textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Tn2-It-uEw">
+                                                                        <rect key="frame" x="0.0" y="51.5" width="348.5" height="46"/>
                                                                         <nil key="textColor"/>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                                        <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                                                        <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES"/>
                                                                     </textField>
-                                                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="right" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="miZ-uK-Oc9">
-                                                                        <rect key="frame" x="0.0" y="69" width="432.5" height="26.5"/>
+                                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="선택해주세요." textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="CkK-g7-3MS">
+                                                                        <rect key="frame" x="0.0" y="102.5" width="348.5" height="46.5"/>
                                                                         <nil key="textColor"/>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                                        <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                                                        <textInputTraits key="textInputTraits"/>
                                                                     </textField>
-                                                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="right" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="lrl-bz-sOo">
-                                                                        <rect key="frame" x="0.0" y="103.5" width="432.5" height="26.5"/>
+                                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="선택해주세요." textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ihv-AI-xYe">
+                                                                        <rect key="frame" x="0.0" y="154" width="348.5" height="46"/>
                                                                         <nil key="textColor"/>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                                        <textInputTraits key="textInputTraits" keyboardType="numberPad" enablesReturnKeyAutomatically="YES"/>
+                                                                        <textInputTraits key="textInputTraits" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
                                                                     </textField>
                                                                 </subviews>
                                                             </stackView>
@@ -1585,36 +1589,217 @@
                                                     </stackView>
                                                 </subviews>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="130" id="dhX-sA-tdd"/>
+                                                    <constraint firstAttribute="height" constant="200" id="dhX-sA-tdd"/>
                                                 </constraints>
                                             </stackView>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ceU-DG-fOe">
-                                                <rect key="frame" x="20" y="214" width="560" height="30"/>
+                                                <rect key="frame" x="20" y="284" width="560" height="30"/>
                                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                                 <state key="normal" title="계산"/>
+                                                <connections>
+                                                    <action selector="clickedCalButton:" destination="9by-S7-Kqx" eventType="touchUpInside" id="O5N-zR-C5q"/>
+                                                </connections>
                                             </button>
+                                            <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="청약 가점 계산 결과" textAlignment="natural" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="CWR-Hj-53I">
+                                                <rect key="frame" x="20" y="334" width="560" height="24"/>
+                                                <accessibility key="accessibilityConfiguration">
+                                                    <accessibilityTraits key="traits" notEnabled="YES"/>
+                                                    <bool key="isElement" value="NO"/>
+                                                </accessibility>
+                                                <nil key="textColor"/>
+                                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                            <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="종합 점수" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pNi-er-Rtx">
+                                                <rect key="frame" x="20" y="378" width="67" height="21"/>
+                                                <accessibility key="accessibilityConfiguration">
+                                                    <accessibilityTraits key="traits" notEnabled="YES"/>
+                                                </accessibility>
+                                                <nil key="textColor"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                            <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="점" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ryy-ls-Wxd">
+                                                <rect key="frame" x="561" y="378" width="19" height="21"/>
+                                                <accessibility key="accessibilityConfiguration">
+                                                    <accessibilityTraits key="traits" notEnabled="YES"/>
+                                                </accessibility>
+                                                <nil key="textColor"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                            <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="0" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="KfL-e6-dYo">
+                                                <rect key="frame" x="536" y="378" width="15" height="21"/>
+                                                <accessibility key="accessibilityConfiguration">
+                                                    <accessibilityTraits key="traits" notEnabled="YES"/>
+                                                </accessibility>
+                                                <color key="textColor" red="0.94944590330123901" green="0.025763476267457008" blue="0.46385020017623901" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                            <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="가점 항목" textAlignment="natural" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0wU-p9-NHk">
+                                                <rect key="frame" x="20" y="419" width="560" height="24"/>
+                                                <accessibility key="accessibilityConfiguration">
+                                                    <accessibilityTraits key="traits" notEnabled="YES"/>
+                                                </accessibility>
+                                                <nil key="textColor"/>
+                                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                            <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="무주택 기간" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bCB-s7-sak">
+                                                <rect key="frame" x="20" y="463" width="82" height="21"/>
+                                                <accessibility key="accessibilityConfiguration">
+                                                    <accessibilityTraits key="traits" notEnabled="YES"/>
+                                                </accessibility>
+                                                <nil key="textColor"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                            <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="부양가족수" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8Tl-F5-W2R">
+                                                <rect key="frame" x="20" y="524" width="78" height="21"/>
+                                                <accessibility key="accessibilityConfiguration">
+                                                    <accessibilityTraits key="traits" notEnabled="YES"/>
+                                                </accessibility>
+                                                <nil key="textColor"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                            <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="0" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tYF-pT-T4b">
+                                                <rect key="frame" x="565" y="463" width="15" height="21"/>
+                                                <accessibility key="accessibilityConfiguration">
+                                                    <accessibilityTraits key="traits" notEnabled="YES"/>
+                                                </accessibility>
+                                                <nil key="textColor"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                            <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="0" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ypw-Z7-cUE">
+                                                <rect key="frame" x="565" y="525" width="15" height="21"/>
+                                                <accessibility key="accessibilityConfiguration">
+                                                    <accessibilityTraits key="traits" notEnabled="YES"/>
+                                                </accessibility>
+                                                <nil key="textColor"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                            <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="0" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Rdb-PC-hZ8">
+                                                <rect key="frame" x="565" y="551" width="15" height="21"/>
+                                                <accessibility key="accessibilityConfiguration">
+                                                    <accessibilityTraits key="traits" notEnabled="YES"/>
+                                                </accessibility>
+                                                <nil key="textColor"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                            <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="0" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ePD-cr-UpI">
+                                                <rect key="frame" x="565" y="489" width="15" height="21"/>
+                                                <accessibility key="accessibilityConfiguration">
+                                                    <accessibilityTraits key="traits" notEnabled="YES"/>
+                                                </accessibility>
+                                                <nil key="textColor"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                            <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="청약통장 가입기간" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="OS8-yy-DQx">
+                                                <rect key="frame" x="20" y="585" width="127" height="21"/>
+                                                <accessibility key="accessibilityConfiguration">
+                                                    <accessibilityTraits key="traits" notEnabled="YES"/>
+                                                </accessibility>
+                                                <nil key="textColor"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                            <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="0" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ts1-lf-zt6">
+                                                <rect key="frame" x="565" y="587" width="15" height="21"/>
+                                                <accessibility key="accessibilityConfiguration">
+                                                    <accessibilityTraits key="traits" notEnabled="YES"/>
+                                                </accessibility>
+                                                <nil key="textColor"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                            <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="0" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Fta-l8-VHo">
+                                                <rect key="frame" x="565" y="618" width="15" height="21"/>
+                                                <accessibility key="accessibilityConfiguration">
+                                                    <accessibilityTraits key="traits" notEnabled="YES"/>
+                                                </accessibility>
+                                                <nil key="textColor"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="y4h-wl-g7p">
+                                                <rect key="frame" x="20" y="659" width="560" height="391"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <mutableString key="text">무주택 기간 :  입주자 모집 공고일 현재 청약통장 가입자의 주민등록등본에 등재된 가입자 및 세대원 
+전원이 무주택자이어야함
+세대원 범위 : 배우자(주민등록이 분리된 배우자 및 그 배우자와 동일한 세대를 이루고 
+있는 세대원 포함), 직계존속(배우자의 직계존속 포함), 직계비속
+
+무주택 기간은 세대주(가입자)와 그 배우자의 무주택 기간을 산정
+무주택기간은 만30세를 기산점으로 하되, 30세 이전에 혼인한 경우 혼인신고한 날부터 
+기산  부양가족 수: 부양가족은 동일한 주민등록 등본에 등재된 직계존 / 비속(배우자의 직계존속 포함)으로 
+구성
+다만, 직계존속을 부양하는 경우에는 세대주로서 3년 이상 계속 부양하여야 하고, 자녀는 미혼자녀로 한정 (만 30세 이상 미혼 자녀는 최근 1년 이상 동일한 주민등록표에 오른 
+경우에만 포함)  청약통장 가입기간: 입주자 모집 공고일 현재 청약신청자의 청약통장 가입기간</mutableString>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                            </textView>
                                         </subviews>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <color key="backgroundColor" red="0.996815025806427" green="0.99205118417739868" blue="0.99196261167526245" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstItem="ceU-DG-fOe" firstAttribute="leading" secondItem="2AB-fE-eJz" secondAttribute="leading" constant="20" id="0sH-sA-hbu"/>
+                                            <constraint firstItem="pNi-er-Rtx" firstAttribute="top" secondItem="CWR-Hj-53I" secondAttribute="bottom" constant="20" id="4Iy-xi-qaI"/>
+                                            <constraint firstAttribute="trailing" secondItem="tYF-pT-T4b" secondAttribute="trailing" constant="20" id="53g-xg-LTH"/>
+                                            <constraint firstItem="y4h-wl-g7p" firstAttribute="top" secondItem="Fta-l8-VHo" secondAttribute="bottom" constant="20" id="5I1-YI-EfM"/>
+                                            <constraint firstAttribute="trailing" secondItem="Rdb-PC-hZ8" secondAttribute="trailing" constant="20" id="87K-iH-g4s"/>
+                                            <constraint firstItem="ts1-lf-zt6" firstAttribute="top" secondItem="Rdb-PC-hZ8" secondAttribute="bottom" constant="15" id="8OD-ic-azg"/>
+                                            <constraint firstItem="bCB-s7-sak" firstAttribute="top" secondItem="0wU-p9-NHk" secondAttribute="bottom" constant="20" id="8t8-Be-iFi"/>
+                                            <constraint firstAttribute="trailing" secondItem="CWR-Hj-53I" secondAttribute="trailing" constant="20" id="9aL-w8-Odd"/>
+                                            <constraint firstAttribute="trailing" secondItem="y4h-wl-g7p" secondAttribute="trailing" constant="20" id="AqU-BA-7Nd"/>
                                             <constraint firstItem="dVm-hO-PP2" firstAttribute="top" secondItem="2AB-fE-eJz" secondAttribute="top" constant="20" id="BAk-s6-oUz"/>
+                                            <constraint firstItem="CWR-Hj-53I" firstAttribute="top" secondItem="ceU-DG-fOe" secondAttribute="bottom" constant="20" id="DY9-ch-rhR"/>
+                                            <constraint firstItem="bCB-s7-sak" firstAttribute="leading" secondItem="2AB-fE-eJz" secondAttribute="leading" constant="20" id="EDV-4K-dRJ"/>
+                                            <constraint firstItem="pNi-er-Rtx" firstAttribute="leading" secondItem="2AB-fE-eJz" secondAttribute="leading" constant="20" id="ExW-PO-Wrd"/>
+                                            <constraint firstAttribute="trailing" secondItem="Ryy-ls-Wxd" secondAttribute="trailing" constant="20" id="G6O-B3-mKf"/>
+                                            <constraint firstItem="OS8-yy-DQx" firstAttribute="top" secondItem="8Tl-F5-W2R" secondAttribute="bottom" constant="40" id="GQp-4Z-gCS"/>
+                                            <constraint firstItem="Ypw-Z7-cUE" firstAttribute="top" secondItem="ePD-cr-UpI" secondAttribute="bottom" constant="15" id="IaA-Wi-d6T"/>
+                                            <constraint firstAttribute="height" constant="1100" id="LMK-8g-44o"/>
+                                            <constraint firstItem="KfL-e6-dYo" firstAttribute="top" secondItem="CWR-Hj-53I" secondAttribute="bottom" constant="20" id="MJC-wA-keo"/>
+                                            <constraint firstItem="OS8-yy-DQx" firstAttribute="leading" secondItem="2AB-fE-eJz" secondAttribute="leading" constant="20" id="RfD-4E-HAn"/>
+                                            <constraint firstItem="tYF-pT-T4b" firstAttribute="top" secondItem="0wU-p9-NHk" secondAttribute="bottom" constant="20" id="Rqm-jk-lhi"/>
+                                            <constraint firstItem="CWR-Hj-53I" firstAttribute="leading" secondItem="2AB-fE-eJz" secondAttribute="leading" constant="20" id="TTb-y6-Kcg"/>
                                             <constraint firstItem="ceU-DG-fOe" firstAttribute="top" secondItem="bi6-Qt-Q7f" secondAttribute="bottom" constant="20" id="Tvo-dM-r9c"/>
-                                            <constraint firstAttribute="height" constant="600" id="WWH-To-oWq"/>
+                                            <constraint firstAttribute="trailing" secondItem="ePD-cr-UpI" secondAttribute="trailing" constant="20" id="Vrk-wg-AD8"/>
                                             <constraint firstAttribute="trailing" secondItem="bi6-Qt-Q7f" secondAttribute="trailing" constant="20" id="Woa-a4-TT4"/>
+                                            <constraint firstItem="Fta-l8-VHo" firstAttribute="top" secondItem="ts1-lf-zt6" secondAttribute="bottom" constant="10" id="WqQ-Ag-52u"/>
+                                            <constraint firstItem="Rdb-PC-hZ8" firstAttribute="top" secondItem="Ypw-Z7-cUE" secondAttribute="bottom" constant="5" id="bzp-x8-k73"/>
                                             <constraint firstItem="bi6-Qt-Q7f" firstAttribute="top" secondItem="dVm-hO-PP2" secondAttribute="bottom" constant="20" id="cL6-am-b67"/>
+                                            <constraint firstItem="Ryy-ls-Wxd" firstAttribute="leading" secondItem="KfL-e6-dYo" secondAttribute="trailing" constant="10" id="de4-LW-xAm"/>
+                                            <constraint firstItem="8Tl-F5-W2R" firstAttribute="leading" secondItem="2AB-fE-eJz" secondAttribute="leading" constant="20" id="djM-wH-Hsw"/>
+                                            <constraint firstAttribute="trailing" secondItem="Fta-l8-VHo" secondAttribute="trailing" constant="20" id="eAc-71-IZn"/>
+                                            <constraint firstItem="0wU-p9-NHk" firstAttribute="top" secondItem="pNi-er-Rtx" secondAttribute="bottom" constant="20" id="edD-F9-6Rj"/>
+                                            <constraint firstItem="Ryy-ls-Wxd" firstAttribute="top" secondItem="CWR-Hj-53I" secondAttribute="bottom" constant="20" id="fEL-17-DTo"/>
+                                            <constraint firstAttribute="bottom" secondItem="y4h-wl-g7p" secondAttribute="bottom" constant="50" id="fUx-jx-Nt2"/>
+                                            <constraint firstAttribute="trailing" secondItem="ts1-lf-zt6" secondAttribute="trailing" constant="20" id="grL-7H-s1W"/>
+                                            <constraint firstItem="0wU-p9-NHk" firstAttribute="leading" secondItem="2AB-fE-eJz" secondAttribute="leading" constant="20" id="hfr-3O-JkJ"/>
                                             <constraint firstItem="bi6-Qt-Q7f" firstAttribute="leading" secondItem="2AB-fE-eJz" secondAttribute="leading" constant="20" id="kQc-us-84t"/>
                                             <constraint firstItem="dVm-hO-PP2" firstAttribute="leading" secondItem="2AB-fE-eJz" secondAttribute="leading" constant="20" id="mGg-zu-YiN"/>
+                                            <constraint firstItem="8Tl-F5-W2R" firstAttribute="top" secondItem="bCB-s7-sak" secondAttribute="bottom" constant="40" id="ooK-xe-NUw"/>
+                                            <constraint firstItem="y4h-wl-g7p" firstAttribute="leading" secondItem="2AB-fE-eJz" secondAttribute="leading" constant="20" id="qlf-t0-K4X"/>
+                                            <constraint firstItem="ePD-cr-UpI" firstAttribute="top" secondItem="tYF-pT-T4b" secondAttribute="bottom" constant="5" id="qsr-ER-jej"/>
                                             <constraint firstAttribute="trailing" secondItem="ceU-DG-fOe" secondAttribute="trailing" constant="20" id="rKs-e4-n5q"/>
+                                            <constraint firstAttribute="trailing" secondItem="Ypw-Z7-cUE" secondAttribute="trailing" constant="20" id="s7Q-lf-Vub"/>
+                                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="dVm-hO-PP2" secondAttribute="trailing" constant="20" symbolic="YES" id="sZg-Pg-3sI"/>
+                                            <constraint firstAttribute="trailing" secondItem="0wU-p9-NHk" secondAttribute="trailing" constant="20" id="ynO-hg-MGQ"/>
                                         </constraints>
                                     </view>
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="2AB-fE-eJz" firstAttribute="leading" secondItem="PrV-t7-fce" secondAttribute="leading" id="05u-cL-ztW"/>
                                     <constraint firstItem="2AB-fE-eJz" firstAttribute="centerX" secondItem="PrV-t7-fce" secondAttribute="centerX" id="FoA-a7-KAE"/>
+                                    <constraint firstItem="2AB-fE-eJz" firstAttribute="top" secondItem="PrV-t7-fce" secondAttribute="top" id="I3c-rD-zgA"/>
                                     <constraint firstAttribute="right" secondItem="2AB-fE-eJz" secondAttribute="right" id="PmP-Yd-ihr"/>
-                                    <constraint firstItem="2AB-fE-eJz" firstAttribute="top" secondItem="PrV-t7-fce" secondAttribute="top" id="cPB-vE-yNn"/>
-                                    <constraint firstItem="2AB-fE-eJz" firstAttribute="centerY" secondItem="PrV-t7-fce" secondAttribute="centerY" id="ioF-Lw-bTp"/>
-                                    <constraint firstAttribute="bottom" secondItem="2AB-fE-eJz" secondAttribute="bottom" id="me7-7A-WWC"/>
+                                    <constraint firstAttribute="bottom" secondItem="2AB-fE-eJz" secondAttribute="bottom" constant="20" symbolic="YES" id="cpY-k5-xRY"/>
                                 </constraints>
                             </scrollView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="izF-ea-4BE" customClass="GADBannerView">
@@ -1630,10 +1815,10 @@
                         <constraints>
                             <constraint firstItem="eiR-sJ-EXK" firstAttribute="top" secondItem="izF-ea-4BE" secondAttribute="bottom" id="0ad-nG-Z1C"/>
                             <constraint firstAttribute="trailing" secondItem="PrV-t7-fce" secondAttribute="trailing" id="9La-mv-XFn"/>
-                            <constraint firstItem="PrV-t7-fce" firstAttribute="top" secondItem="91b-Kk-KIj" secondAttribute="top" id="9Tm-qb-8cR"/>
                             <constraint firstItem="PrV-t7-fce" firstAttribute="leading" secondItem="91b-Kk-KIj" secondAttribute="leading" id="MQN-zB-V7d"/>
                             <constraint firstItem="izF-ea-4BE" firstAttribute="centerX" secondItem="91b-Kk-KIj" secondAttribute="centerX" id="MqP-9s-vMz"/>
-                            <constraint firstItem="PrV-t7-fce" firstAttribute="bottom" secondItem="eiR-sJ-EXK" secondAttribute="top" id="crO-IF-BNI"/>
+                            <constraint firstItem="PrV-t7-fce" firstAttribute="bottom" secondItem="eiR-sJ-EXK" secondAttribute="top" id="Vk2-aJ-Bhe"/>
+                            <constraint firstItem="PrV-t7-fce" firstAttribute="top" secondItem="91b-Kk-KIj" secondAttribute="top" id="zW9-ry-QA5"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="rd8-ak-T2C"/>
@@ -1641,11 +1826,22 @@
                     <size key="freeformSize" width="600" height="600"/>
                     <connections>
                         <outlet property="bannerView" destination="izF-ea-4BE" id="xb4-SN-IVv"/>
+                        <outlet property="hasHouse" destination="dPs-Cu-8xH" id="6yM-LA-3XM"/>
+                        <outlet property="noHousePeriodTextField" destination="tYF-pT-T4b" id="V9H-oy-cIN"/>
+                        <outlet property="noHousePickerTextField" destination="Tn2-It-uEw" id="iR1-f2-evR"/>
+                        <outlet property="noHouseResultTextField" destination="ePD-cr-UpI" id="Vvp-pO-3jV"/>
+                        <outlet property="numberOfFamilyPeriodTextField" destination="Ypw-Z7-cUE" id="92F-Yn-qQL"/>
+                        <outlet property="numberOfFamilyPickerTextField" destination="CkK-g7-3MS" id="vEI-Ub-Ylh"/>
+                        <outlet property="numberOfFamilyResultTextField" destination="Rdb-PC-hZ8" id="e5F-xQ-Vko"/>
+                        <outlet property="periodOfSubscriptionAccountPickerTextField" destination="Ihv-AI-xYe" id="8bR-Ag-EuM"/>
+                        <outlet property="periodOfSubscriptionAccountResultTextField" destination="Fta-l8-VHo" id="sR8-p7-OtT"/>
+                        <outlet property="periodOfSubscriptionAccountTextField" destination="ts1-lf-zt6" id="RGu-cb-ag4"/>
+                        <outlet property="totalResult" destination="KfL-e6-dYo" id="0iR-Rp-PRa"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CRA-93-5Vp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1048" y="1480"/>
+            <point key="canvasLocation" x="-1048" y="1479.7601199400301"/>
         </scene>
     </scenes>
 </document>

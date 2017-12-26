@@ -20,13 +20,25 @@ class SquareMeterController: UIViewController, UITextFieldDelegate {
         super.viewDidLoad()
         initializeTextFields()
         self.title = "평형 계산"
+        
+        // add done button
+        let keyboardToolbar = UIToolbar()
+        keyboardToolbar.sizeToFit()
+        let flexBarButton = UIBarButtonItem(barButtonSystemItem: .flexibleSpace,
+                                            target: nil, action: nil)
+        let doneBarButton = UIBarButtonItem(barButtonSystemItem: .done,
+                                            target: view, action: #selector(UIView.endEditing(_:)))
+        keyboardToolbar.items = [flexBarButton, doneBarButton]
+        meterToSquareTextField.inputAccessoryView = keyboardToolbar
+        squareMeterTextField.inputAccessoryView = keyboardToolbar
+        
         // admob banner ads
         bannerView.adUnitID = "ca-app-pub-2778546304304506/2899286231"
         bannerView.rootViewController = self
         
         let request = GADRequest()
-        request.testDevices = [ kGADSimulatorID,                       // All simulators
-            "2077ef9a63d2b398840261c8221a0c9b" ];  // Sample device ID
+//        request.testDevices = [ kGADSimulatorID,                       // All simulators
+//            "2077ef9a63d2b398840261c8221a0c9b" ];  // Sample device ID
         
         bannerView.load(request)
     }

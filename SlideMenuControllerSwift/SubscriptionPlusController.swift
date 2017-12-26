@@ -10,313 +10,168 @@ import GoogleMobileAds
 
 //weak var dealPriceResult: UILabel!
 
-class SubscriptionPlusController: UIViewController, UITextFieldDelegate {
-//    private var selectStatus: CommissionSelecteStatus = CommissionSelecteStatus.Deal;
-//
-//    private var dealPrice: Double = 0;
-//    private var depositPrice: Double = 0;
-//    private var commissionMothlyPrice: Double = 0;
-//
-//    @IBOutlet weak var commissionMonthlyPriceTextField: UITextField!
-//    @IBOutlet weak var depositPriceTextField: UITextField!
-//    @IBOutlet weak var dealPriceTextField: UITextField!
-//
-//    @IBOutlet weak var commissionMonthlyPriceTitle: UILabel!
-//    @IBOutlet weak var dealPriceTitle: UILabel!
-//    @IBOutlet weak var depositPriceTitle: UILabel!
-//
-//    @IBOutlet weak var dealPriceResult: UILabel!
-//    @IBOutlet weak var upperLimitRateResult: UILabel!
-//    @IBOutlet weak var upperLimitPriceResult: UILabel!
-//    @IBOutlet weak var maxCommissionPriceResult: UILabel!
-//    @IBOutlet weak var segmentedControl: UISegmentedControl!
+class SubscriptionPlusController: UIViewController, UITextFieldDelegate, UIPickerViewDelegate, UIPickerViewDataSource {
+
     @IBOutlet weak var bannerView: GADBannerView!
     
+    @IBOutlet weak var noHousePickerTextField: UITextField!
+    
+    @IBOutlet weak var periodOfSubscriptionAccountPickerTextField: UITextField!
+    @IBOutlet weak var numberOfFamilyPickerTextField: UITextField!
+    
+    @IBOutlet weak var hasHouse: UISegmentedControl!
+    
+    @IBOutlet weak var pickerView: UIPickerView!
+
+    @IBOutlet weak var totalResult: UITextField!
+    
+    @IBOutlet weak var periodOfSubscriptionAccountTextField: UITextField!
+    @IBOutlet weak var periodOfSubscriptionAccountResultTextField: UITextField!
+    @IBOutlet weak var numberOfFamilyResultTextField: UITextField!
+    @IBOutlet weak var numberOfFamilyPeriodTextField: UITextField!
+    @IBOutlet weak var noHouseResultTextField: UITextField!
+    @IBOutlet weak var noHousePeriodTextField: UITextField!
     let formatterToCurrency = NumberFormatter()
+    var noHousePeriodPickerArray = ["0년", "1년 미만", "1년 이상 ~ 2년 미만", "2년 이상 ~ 3년 미만", "3년 이상 ~ 4년 미만", "4년 이상 ~ 5년 미만", "5년 이상 ~ 6년 미만", "6년 이상 ~ 7년 미만", "7년 이상 ~ 8년 미만", "8년 이상 ~ 9년 미만", "9년 이상 ~ 10년 미만", "10년 이상 ~ 11년 미만", "11년 이상 ~ 12년 미만", "12년 이상 ~ 13년 미만", "13년 이상 ~ 14년 미만", "14년 이상 ~ 15년 미만", "15년 이상"];
+    var numberOfFamilyPickerArray = ["0명", "1명", "2명", "3명", "4명", "5명", "6명 이상"];
+    var periodOfSubscriptionAccountPickerArray = ["6개월 미만", "6개월 이상 ~ 1년 미만", "1년 이상 ~ 2년 미만", "2년 이상 ~ 3년 미만", "3년 이상 ~ 4년 미만", "4년 이상 ~ 5년 미만", "5년 이상 ~ 6년 미만", "6년 이상 ~ 7년 미만", "7년 이상 ~ 8년 미만", "8년 이상 ~ 9년 미만", "9년 이상 ~ 10년 미만", "10년 이상 ~ 11년 미만", "11년 이상 ~ 12년 미만", "12년 이상 ~ 13년 미만", "13년 이상 ~ 14년 미만", "14년 이상 ~ 15년 미만", "15년 이상"];
+    var noHousePeriod = 0;
+    var numberOfFamily = 0;
+    var periodOfSubscriptionAccount = 0;
+    
+    var noHousePeriodScoreArray = [0, 2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30, 32];
+    var numberOfFamilyScoreArray = [0, 10, 15, 20, 25, 30, 35];
+    var periodOfSubscriptionAccountScoreArray = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17];
+    let noHousePickerView = UIPickerView();
+    let numberOfFamilyPickerView = UIPickerView();
+    let periodOfSubscriptionAccountPickerView = UIPickerView();
     
     override func viewDidLoad() {
         super.viewDidLoad()
 //        initializeTextFields()
         
-        formatterToCurrency.numberStyle = .currency
-        formatterToCurrency.currencySymbol = ""
-        formatterToCurrency.minimumFractionDigits = 0
+//        let noHousePickerView = UIPickerView();
+        noHousePickerView.delegate = self;
+        noHousePickerView.tag = 1;
+        noHousePickerTextField.inputView = noHousePickerView;
         
-//        dealPriceTextField.addTarget(self, action: #selector(dealPriceTextFieldDidChange), for: .editingChanged)
-//        depositPriceTextField.addTarget(self, action: #selector(depositPriceTextFieldDidChange), for: .editingChanged)
-//        commissionMonthlyPriceTextField.addTarget(self, action: #selector(commissionMonthlyPriceTextFieldDidChange), for: .editingChanged)
+        numberOfFamilyPickerView.delegate = self;
+        numberOfFamilyPickerView.tag = 2;
+        numberOfFamilyPickerTextField.inputView = numberOfFamilyPickerView;
+        
+        periodOfSubscriptionAccountPickerView.delegate = self;
+        periodOfSubscriptionAccountPickerView.tag = 3;
+        periodOfSubscriptionAccountPickerTextField.inputView = periodOfSubscriptionAccountPickerView;
+        
+        
+        // add done button
+        let keyboardToolbar = UIToolbar()
+        keyboardToolbar.sizeToFit()
+        let flexBarButton = UIBarButtonItem(barButtonSystemItem: .flexibleSpace,
+                                            target: nil, action: nil)
+        let doneBarButton = UIBarButtonItem(barButtonSystemItem: .done,
+                                            target: view, action: #selector(UIView.endEditing(_:)))
+        keyboardToolbar.items = [flexBarButton, doneBarButton]
+        noHousePickerTextField.inputAccessoryView = keyboardToolbar
+        numberOfFamilyPickerTextField.inputAccessoryView = keyboardToolbar
+        periodOfSubscriptionAccountPickerTextField.inputAccessoryView = keyboardToolbar
     }
     
-//    func dealPriceTextFieldDidChange(_ textField: UITextField) {
-//
-//        if let amountString = dealPriceTextField.text?.currencyInputFormatting() {
-//            textField.text = amountString
-//        }
-//    }
-//    func depositPriceTextFieldDidChange(_ textField: UITextField) {
-//
-//        if let amountString = depositPriceTextField.text?.currencyInputFormatting() {
-//            textField.text = amountString
-//        }
-//    }
-//    func commissionMonthlyPriceTextFieldDidChange(_ textField: UITextField) {
-//
-//        if let amountString = commissionMonthlyPriceTextField.text?.currencyInputFormatting() {
-//            textField.text = amountString
-//        }
-//    }
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1;
+    }
     
-    // Designate this class as the text fields' delegate
-    // and set their keyboards while we're at it.
-//    func initializeTextFields() {
-//        dealPriceTextField.delegate = self
-//        dealPriceTextField.keyboardType = UIKeyboardType.numberPad
-//
-//        depositPriceTextField.delegate = self
-//        depositPriceTextField.keyboardType = UIKeyboardType.numberPad
-//
-//        commissionMonthlyPriceTextField.delegate = self
-//        commissionMonthlyPriceTextField.keyboardType = UIKeyboardType.numberPad
-//    }
+    func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
+        return 1
+    }
     
-    // MARK: UITextFieldDelegate events and related methods
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
     
-//    func textField(_ textField: UITextField,
-//                   shouldChangeCharactersIn range: NSRange,
-//                   replacementString string: String)
-//        -> Bool
-//    {
-//        if string.characters.count == 0 {
-//            return true
-//        }
-//
-//        let currentText = textField.text ?? ""
-//        let prospectiveText = (currentText as NSString).replacingCharacters(in: range, with: string)
-//
-//        switch textField {
-//        case dealPriceTextField,
-//             depositPriceTextField,
-//             commissionMonthlyPriceTextField:
-//            print(currentText)
-//            return prospectiveText.characters.count <= 14
-//        default:
-//            return true
-//        }
-//
-//    }
+        if pickerView.tag == 1 {
+            return noHousePeriodPickerArray.count;
+        } else if pickerView.tag == 3 {
+            return periodOfSubscriptionAccountPickerArray.count;
+        }
+        return numberOfFamilyPickerArray.count;
+    }
     
-    // 계산 버튼
-//    @IBAction func calculateBtn(_ sender: UIButton) {
-//        print("click button", selectStatus);
-//        switch selectStatus {
-//        case CommissionSelecteStatus.Deal:
-//            calAboutDeal()
-//        case CommissionSelecteStatus.Lease:
-//            calAboutLease()
-//        case CommissionSelecteStatus.Month:
-//            calAboutMonth()
-//        default:
-//            return;
-//        }
-//        
-//    }
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        
+        if pickerView.tag == 1 {
+            return noHousePeriodPickerArray[row];
+        } else if pickerView.tag == 2 {
+            return numberOfFamilyPickerArray[row];
+        } else if pickerView.tag == 3 {
+            return periodOfSubscriptionAccountPickerArray[row];
+        }
+        return noHousePeriodPickerArray[row]
+    }
     
-    // 매매 / 교환
-//    func calAboutDeal() -> Void {
-//        print("calAboutDeal")
-//
-//        if let text = dealPriceTextField.text, !text.isEmpty {
-//            let replacedText = text.replacingOccurrences(of: ",", with: "")
-//            dealPrice = Double(replacedText)!;
-//        } else {
-//            dealPrice = 0;
-//        }
-//
-//        if (dealPrice == 0) {
-//            self.showToast(message: "거래금액을 입력해주세요.");
-//        }
-//
-//        if (dealPrice < 50000000) {
-//            var dealResult = dealPrice * 0.006;
-//
-//            if(dealResult > 250000) {
-//                dealResult = 2500000;
-//            }
-//
-//            dealPriceResult.text = dealPriceTextField.text
-//            maxCommissionPriceResult.text = formatterToCurrency.string(from: dealResult as NSNumber)
-//            upperLimitPriceResult.text = "250,000"
-//            upperLimitRateResult.text = "0.6"
-//        } else if (dealPrice >= 50000000 && dealPrice < 200000000) {
-//            var dealResult = dealPrice * 0.005;
-//
-//            if(dealResult > 800000) {
-//                dealResult = 800000;
-//            }
-//            dealPriceResult.text = dealPriceTextField.text
-//            maxCommissionPriceResult.text = formatterToCurrency.string(from: dealResult as NSNumber)
-//            upperLimitPriceResult.text = "800,000"
-//            upperLimitRateResult.text = "0.5"
-//        } else if (dealPrice >= 200000000 && dealPrice < 600000000) {
-//            let dealResult = dealPrice * 0.004;
-//
-//            dealPriceResult.text = dealPriceTextField.text
-//            maxCommissionPriceResult.text = formatterToCurrency.string(from: dealResult as NSNumber)
-//            upperLimitPriceResult.text = "-"
-//            upperLimitRateResult.text = "0.4"
-//        } else if (dealPrice >= 600000000 && dealPrice < 900000000) {
-//            let dealResult = dealPrice * 0.005;
-//
-//            dealPriceResult.text = dealPriceTextField.text
-//            maxCommissionPriceResult.text = formatterToCurrency.string(from: dealResult as NSNumber)
-//            upperLimitPriceResult.text = "-"
-//            upperLimitRateResult.text = "0.5"
-//        } else {
-//            let dealResult = dealPrice * 0.009;
-//
-//            dealPriceResult.text = dealPriceTextField.text
-//            maxCommissionPriceResult.text = formatterToCurrency.string(from: dealResult as NSNumber)
-//            upperLimitPriceResult.text = "-"
-//            upperLimitRateResult.text = "0.9"
-//        }
-//
-//    }
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int)
+    {
+        if pickerView.tag == 1 {
+            noHousePickerTextField.text = noHousePeriodPickerArray[row];
+            setNoHousePeriod(row: row);
+        } else if pickerView.tag == 2 {
+            numberOfFamilyPickerTextField.text = numberOfFamilyPickerArray[row];
+            setNumberOfFamily(row: row);
+        } else if pickerView.tag == 3 {
+            periodOfSubscriptionAccountPickerTextField.text = periodOfSubscriptionAccountPickerArray[row];
+            setPeriodOfSubscriptionAccount(row: row);
+        } else {
+            noHousePickerTextField.text = noHousePeriodPickerArray[row];
+            setNoHousePeriod(row: row);
+        }
+    }
     
-    // 전세 임대차
-//    func calAboutLease() -> Void {
-//        print("calAboutLease")
-//
-//        if let text = depositPriceTextField.text, !text.isEmpty {
-//            let replacedText = text.replacingOccurrences(of: ",", with: "")
-//            depositPrice = Double(replacedText)!;
-//        } else {
-//            depositPrice = 0;
-//        }
-//
-//        if (depositPrice == 0) {
-//            self.showToast(message: "보증금을 입력해주세요.");
-//        }
-//
-//        if (depositPrice < 50000000) {
-//            var depositResult = depositPrice * 0.005;
-//
-//            if(depositResult > 200000) {
-//                depositResult = 2000000;
-//            }
-//
-//            dealPriceResult.text = depositPriceTextField.text
-//            maxCommissionPriceResult.text = formatterToCurrency.string(from: depositResult as NSNumber)
-//            upperLimitPriceResult.text = "200,000"
-//            upperLimitRateResult.text = "0.5"
-//        } else if (depositPrice >= 50000000 && depositPrice < 100000000) {
-//            var depositResult = depositPrice * 0.004;
-//
-//            if(depositResult > 300000) {
-//                depositResult = 300000;
-//            }
-//
-//            dealPriceResult.text = depositPriceTextField.text
-//            maxCommissionPriceResult.text = formatterToCurrency.string(from: depositResult as NSNumber)
-//            upperLimitPriceResult.text = "300,000"
-//            upperLimitRateResult.text = "0.4"
-//        } else if (depositPrice >= 100000000 && depositPrice < 300000000) {
-//            let depositResult = depositPrice * 0.003;
-//
-//            dealPriceResult.text = depositPriceTextField.text
-//            maxCommissionPriceResult.text = formatterToCurrency.string(from: depositResult as NSNumber)
-//            upperLimitPriceResult.text = "-"
-//            upperLimitRateResult.text = "0.3"
-//        } else if (depositPrice >= 300000000 && depositPrice < 600000000) {
-//            let depositResult = depositPrice * 0.004;
-//
-//            dealPriceResult.text = depositPriceTextField.text
-//            maxCommissionPriceResult.text = formatterToCurrency.string(from: depositResult as NSNumber)
-//            upperLimitPriceResult.text = "-"
-//            upperLimitRateResult.text = "0.4"
-//        } else {
-//            let depositResult = depositPrice * 0.008;
-//
-//            dealPriceResult.text = depositPriceTextField.text
-//            maxCommissionPriceResult.text = formatterToCurrency.string(from: depositResult as NSNumber)
-//            upperLimitPriceResult.text = "-"
-//            upperLimitRateResult.text = "0.8"
-//        }
-//    }
+    func setNoHousePeriod(row: Int) {
+        print("noHousePeriodFunc row : ", row);
+        noHousePeriod = row;
+    }
     
-//    func calAboutMonth() -> Void {
-//
-//        // deposit
-//        if let text = depositPriceTextField.text, !text.isEmpty {
-//            let replacedText = text.replacingOccurrences(of: ",", with: "")
-//            depositPrice = Double(replacedText)!;
-//        } else {
-//            depositPrice = 0;
-//        }
-//
-//        // monthly fee
-//        if let text = commissionMonthlyPriceTextField.text, !text.isEmpty {
-//            let replacedText = text.replacingOccurrences(of: ",", with: "")
-//            commissionMothlyPrice = Double(replacedText)!;
-//        } else {
-//            commissionMothlyPrice = 0;
-//        }
-//
-//        if (depositPrice == 0 || commissionMothlyPrice == 0) {
-//            self.showToast(message: "보증금과 월세액을 입력해주세요.");
-//        }
-//
-//
-//        var resultDealPrice = depositPrice + (commissionMothlyPrice * 100);
-//
-//        if (resultDealPrice < 50000000) {
-//            resultDealPrice = depositPrice + (commissionMothlyPrice * 70);
-//        }
-//
-//        if (resultDealPrice < 50000000) {
-//            var dealResult = resultDealPrice * 0.005;
-//
-//            if(dealResult > 200000) {
-//                dealResult = 2000000;
-//            }
-//
-//            dealPriceResult.text = formatterToCurrency.string(from: resultDealPrice as NSNumber)
-//            maxCommissionPriceResult.text = formatterToCurrency.string(from: dealResult as NSNumber)
-//            upperLimitPriceResult.text = "200,000"
-//            upperLimitRateResult.text = "0.5"
-//        } else if (resultDealPrice >= 50000000 && resultDealPrice < 100000000) {
-//            var dealResult = resultDealPrice * 0.004;
-//
-//            if(dealResult > 300000) {
-//                dealResult = 300000;
-//            }
-//
-//            dealPriceResult.text = formatterToCurrency.string(from: resultDealPrice as NSNumber)
-//            maxCommissionPriceResult.text = formatterToCurrency.string(from: dealResult as NSNumber)
-//            upperLimitPriceResult.text = "300,000"
-//            upperLimitRateResult.text = "0.4"
-//        } else if (resultDealPrice >= 100000000 && resultDealPrice < 300000000) {
-//            let dealResult = resultDealPrice * 0.003;
-//
-//            dealPriceResult.text = formatterToCurrency.string(from: resultDealPrice as NSNumber)
-//            maxCommissionPriceResult.text = formatterToCurrency.string(from: dealResult as NSNumber)
-//            upperLimitPriceResult.text = "-"
-//            upperLimitRateResult.text = "0.3"
-//        } else if (resultDealPrice >= 300000000 && resultDealPrice < 600000000) {
-//            let dealResult = resultDealPrice * 0.004;
-//
-//            dealPriceResult.text = formatterToCurrency.string(from: resultDealPrice as NSNumber)
-//            maxCommissionPriceResult.text = formatterToCurrency.string(from: dealResult as NSNumber)
-//            upperLimitPriceResult.text = "-"
-//            upperLimitRateResult.text = "0.4"
-//        } else {
-//            let dealResult = resultDealPrice * 0.008;
-//
-//            dealPriceResult.text = formatterToCurrency.string(from: resultDealPrice as NSNumber)
-//            maxCommissionPriceResult.text = formatterToCurrency.string(from: dealResult as NSNumber)
-//            upperLimitPriceResult.text = "-"
-//            upperLimitRateResult.text = "0.8"
-//        }
-//    }
+    func setNumberOfFamily(row: Int) {
+        print("numberOfFamilyFunc row : ", row);
+        numberOfFamily = row;
+    }
+    
+    func setPeriodOfSubscriptionAccount(row: Int) {
+        print("periodOfSubscriptionAccountFunc row : ", row);
+        periodOfSubscriptionAccount = row;
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        view.endEditing(true);
+    }
+    
+    
+    @IBAction func clickedCalButton(_ sender: Any) {
+        print("clicked button");
+        var selectedIndex = hasHouse.selectedSegmentIndex;
+        if (selectedIndex == 1 && numberOfFamily == 0 || periodOfSubscriptionAccount == 0) || (selectedIndex == 1 && noHousePeriod == 0 || numberOfFamily == 0 || periodOfSubscriptionAccount == 0) {
+            self.showToast(message: "모든 항목을 선택해주세요.");
+            return;
+        }
+        var result = noHousePeriodScoreArray[noHousePeriod] + numberOfFamilyScoreArray[numberOfFamily] + periodOfSubscriptionAccountScoreArray[periodOfSubscriptionAccount];
+        
+        // 총점
+        totalResult.text = String(result);
+        // 무주택기간
+        if selectedIndex == 0 {
+            noHousePeriodTextField.text = "0년"
+        } else {
+            noHousePeriodTextField.text = String(noHousePeriodPickerArray[noHousePeriod])
+        }
+        noHouseResultTextField.text = String(noHousePeriodScoreArray[noHousePeriod]) + "점";
+        
+        // 부양가족 수
+        numberOfFamilyResultTextField.text = String(numberOfFamilyScoreArray[numberOfFamily]) + "점";
+        numberOfFamilyPeriodTextField.text = String(numberOfFamilyPickerArray[numberOfFamily]);
+        // 청약통장 가입 기간
+        periodOfSubscriptionAccountResultTextField.text = String(periodOfSubscriptionAccountScoreArray[periodOfSubscriptionAccount]) + "점";
+        periodOfSubscriptionAccountTextField.text = String(periodOfSubscriptionAccountPickerArray[periodOfSubscriptionAccount]);
+        
+        print("합산결과는 : ", result);
+    }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -331,46 +186,33 @@ class SubscriptionPlusController: UIViewController, UITextFieldDelegate {
         let request = GADRequest()
         
         //test
-        request.testDevices = [ kGADSimulatorID,                       // All simulators
-            "2077ef9a63d2b398840261c8221a0c9b" ];  // Sample device ID
+//        request.testDevices = [ kGADSimulatorID,                       // All simulators
+//            "2077ef9a63d2b398840261c8221a0c9b" ];  // Sample device ID
         
         bannerView.load(request)
     }
     
-//    @IBAction func indexChanged(_ sender: UISegmentedControl) {
-//        switch segmentedControl.selectedSegmentIndex
-//        {
-//        case 0:
-//            selectStatus = CommissionSelecteStatus.Deal
-//
-//            dealPriceTextField.isEnabled = true;
-//            depositPriceTextField.isEnabled = false;
-//            commissionMonthlyPriceTextField.isEnabled = false;
-//
-//            makeEmptyText(text: depositPriceTextField)
-//            makeEmptyText(text: commissionMonthlyPriceTextField)
-//            print("index0")
-//        case 1:
-//            selectStatus = CommissionSelecteStatus.Lease
-//            dealPriceTextField.isEnabled = false;
-//            depositPriceTextField.isEnabled = true;
-//            commissionMonthlyPriceTextField.isEnabled = false;
-//
-//            makeEmptyText(text: dealPriceTextField)
-//            makeEmptyText(text: commissionMonthlyPriceTextField)
-//            print("index 1 ");
-//        case 2:
-//            selectStatus = CommissionSelecteStatus.Month
-//            dealPriceTextField.isEnabled = false;
-//            depositPriceTextField.isEnabled = true;
-//            commissionMonthlyPriceTextField.isEnabled = true;
-//
-//            makeEmptyText(text: dealPriceTextField)
-//        default:
-//            break;
-//        }
-//    }
-//
+    @IBAction func indexChanged(_ sender: UISegmentedControl) {
+        switch hasHouse.selectedSegmentIndex
+        {
+        case 0:
+            noHousePeriod = 0;
+            noHousePickerView.selectRow(0, inComponent: 0, animated: true)
+            noHousePickerTextField.text = "";
+            noHousePickerTextField.placeholder = "무주택자만 해당 합니다."
+            noHousePickerTextField.alpha = 0.5;
+            noHousePickerTextField.isUserInteractionEnabled = false;
+            print("index0")
+        case 1:
+            noHousePickerTextField.placeholder = "선택해주세요."
+            noHousePickerTextField.alpha = 1;
+            noHousePickerTextField.isUserInteractionEnabled = true;
+            print("index 1 ");
+        default:
+            break;
+        }
+    }
+
     func makeEmptyText(text: UITextField) -> Void {
         text.text = ""
     }
