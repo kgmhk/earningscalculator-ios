@@ -40,7 +40,7 @@ class SubscriptionPlusController: UIViewController, UITextFieldDelegate, UIPicke
     var periodOfSubscriptionAccount = 0;
     
     var noHousePeriodScoreArray = [0, 2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30, 32];
-    var numberOfFamilyScoreArray = [0, 10, 15, 20, 25, 30, 35];
+    var numberOfFamilyScoreArray = [5, 10, 15, 20, 25, 30, 35];
     var periodOfSubscriptionAccountScoreArray = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17];
     let noHousePickerView = UIPickerView();
     let numberOfFamilyPickerView = UIPickerView();
@@ -147,10 +147,10 @@ class SubscriptionPlusController: UIViewController, UITextFieldDelegate, UIPicke
     @IBAction func clickedCalButton(_ sender: Any) {
         print("clicked button");
         var selectedIndex = hasHouse.selectedSegmentIndex;
-        if (selectedIndex == 1 && numberOfFamily == 0 || periodOfSubscriptionAccount == 0) || (selectedIndex == 1 && noHousePeriod == 0 || numberOfFamily == 0 || periodOfSubscriptionAccount == 0) {
-            self.showToast(message: "모든 항목을 선택해주세요.");
-            return;
-        }
+//        if (selectedIndex == 1 && numberOfFamily == 0 || periodOfSubscriptionAccount == 0) || (selectedIndex == 1 && noHousePeriod == 0 || numberOfFamily == 0 || periodOfSubscriptionAccount == 0) {
+//            self.showToast(message: "모든 항목을 선택해주세요.");
+//            return;
+//        }
         var result = noHousePeriodScoreArray[noHousePeriod] + numberOfFamilyScoreArray[numberOfFamily] + periodOfSubscriptionAccountScoreArray[periodOfSubscriptionAccount];
         
         // 총점
@@ -204,7 +204,7 @@ class SubscriptionPlusController: UIViewController, UITextFieldDelegate, UIPicke
             noHousePickerTextField.isUserInteractionEnabled = false;
             print("index0")
         case 1:
-            noHousePickerTextField.placeholder = "선택해주세요."
+            noHousePickerTextField.placeholder = "0년"
             noHousePickerTextField.alpha = 1;
             noHousePickerTextField.isUserInteractionEnabled = true;
             print("index 1 ");

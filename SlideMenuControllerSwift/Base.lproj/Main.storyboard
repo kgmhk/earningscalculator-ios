@@ -1571,13 +1571,13 @@
                                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                         <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES"/>
                                                                     </textField>
-                                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="선택해주세요." textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="CkK-g7-3MS">
+                                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="0명" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="CkK-g7-3MS">
                                                                         <rect key="frame" x="0.0" y="102.5" width="348.5" height="46.5"/>
                                                                         <nil key="textColor"/>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                         <textInputTraits key="textInputTraits"/>
                                                                     </textField>
-                                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="선택해주세요." textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ihv-AI-xYe">
+                                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="6개월 미만" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ihv-AI-xYe">
                                                                         <rect key="frame" x="0.0" y="154" width="348.5" height="46"/>
                                                                         <nil key="textColor"/>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -1736,8 +1736,7 @@
 있는 세대원 포함), 직계존속(배우자의 직계존속 포함), 직계비속
 
 무주택 기간은 세대주(가입자)와 그 배우자의 무주택 기간을 산정
-무주택기간은 만30세를 기산점으로 하되, 30세 이전에 혼인한 경우 혼인신고한 날부터 
-기산  부양가족 수: 부양가족은 동일한 주민등록 등본에 등재된 직계존 / 비속(배우자의 직계존속 포함)으로 
+무주택기간은 만30세를 기산점으로 하되, 30세 이전에 혼인한 경우 혼인신고한 날부터 계산  부양가족 수: 부양가족은 동일한 주민등록 등본에 등재된 직계존 / 비속(배우자의 직계존속 포함)으로 
 구성
 다만, 직계존속을 부양하는 경우에는 세대주로서 3년 이상 계속 부양하여야 하고, 자녀는 미혼자녀로 한정 (만 30세 이상 미혼 자녀는 최근 1년 이상 동일한 주민등록표에 오른 
 경우에만 포함)  청약통장 가입기간: 입주자 모집 공고일 현재 청약신청자의 청약통장 가입기간</mutableString>
