@@ -183,7 +183,8 @@ class SubscriptionPlusController: UIViewController, UITextFieldDelegate, UIPicke
         bannerView.adUnitID = "ca-app-pub-2778546304304506/2899286231"
         bannerView.rootViewController = self
         
-        let request = GADRequest()
+        let request = Admob.adLoad();
+//            GADRequest()
         
         //test
 //        request.testDevices = [ kGADSimulatorID,                       // All simulators

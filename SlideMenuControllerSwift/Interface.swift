@@ -12,3 +12,8 @@ enum InterestSelecteStatus: Int {
     case principalAndInterest
     case expiryDateOfPrincipalMaturity
 }
+
+enum TypeOfAccountStatus: Int {
+    case deposit = 1
+    case installmentSavings
+}

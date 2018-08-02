@@ -137,7 +137,9 @@ class RentRevenueController: UIViewController, UITextFieldDelegate {
         bannerView.rootViewController = self
         
         //test
-        let request = GADRequest()
+        
+        let request = Admob.adLoad();
+//            GADRequest()
 //        request.testDevices = [ kGADSimulatorID,                       // All simulators
 //            "2077ef9a63d2b398840261c8221a0c9b" ];  // Sample device ID
         

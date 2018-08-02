@@ -37,6 +37,6 @@ class NonMenuController: UIViewController {
     }
   
     @IBAction func didTouchToMain(_ sender: UIButton) {
-        delegate?.changeViewController(LeftMenu.main)
+        delegate?.changeViewController(LeftMenu.rentRevenue)
     }
 }

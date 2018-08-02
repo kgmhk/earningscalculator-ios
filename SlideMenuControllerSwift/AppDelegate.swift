@@ -14,19 +14,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // create viewController code...
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         
-        let mainViewController = storyboard.instantiateViewController(withIdentifier: "RentRevenueController") as! RentRevenueController
+        let rentRevenueController = storyboard.instantiateViewController(withIdentifier: "RentRevenueController") as! RentRevenueController
         let leftViewController = storyboard.instantiateViewController(withIdentifier: "LeftViewController") as! LeftViewController
 //        let rightViewController = storyboard.instantiateViewController(withIdentifier: "RightViewController") as! RightViewController
         
-        let nvc: UINavigationController = UINavigationController(rootViewController: mainViewController)
+        let nvc: UINavigationController = UINavigationController(rootViewController: rentRevenueController)
         
         UINavigationBar.appearance().tintColor = UIColor(hex: "689F38")
         
-        leftViewController.mainViewController = nvc
+        leftViewController.RentRevenueController = nvc
         
         let slideMenuController = ExSlideMenuController(mainViewController:nvc, leftMenuViewController: leftViewController /* ,rightMenuViewController: rightViewController*/)
         slideMenuController.automaticallyAdjustsScrollViewInsets = true
-        slideMenuController.delegate = mainViewController
+        slideMenuController.delegate = rentRevenueController
         self.window?.backgroundColor = UIColor(red: 236.0, green: 238.0, blue: 241.0, alpha: 1.0)
         self.window?.rootViewController = slideMenuController
         self.window?.makeKeyAndVisible()

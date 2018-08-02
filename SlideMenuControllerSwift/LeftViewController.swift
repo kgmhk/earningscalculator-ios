@@ -8,11 +8,12 @@
 import UIKit
 
 enum LeftMenu: Int {
-    case main = 0
-    case swift
-    case java
-    case go
-    case nonMenu
+    case rentRevenue = 0
+    case commission
+    case squareMeter
+    case interest
+    case subscriptionPlus
+    case deposit
 }
 
 protocol LeftMenuProtocol : class {
@@ -22,13 +23,15 @@ protocol LeftMenuProtocol : class {
 class LeftViewController : UIViewController, LeftMenuProtocol {
     
     @IBOutlet weak var tableView: UITableView!
-    var menus = ["임대수익률", "중개 수수료(복비계산)", "평형 계산", "대출 이자", "청약 가점"]
-    var mainViewController: UIViewController!
+    var menus = ["임대수익률", "중개 수수료(복비계산)", "평형 계산", "대출 이자", "청약 가점", "예금 계산기"]
+//    var mainViewController: UIViewController!
+    var RentRevenueController: UIViewController!
     var CommissionFeeController: UIViewController!
     var SquareMeterController: UIViewController!
     var InterestController: UIViewController!
     var nonMenuViewController: UIViewController!
     var SubscriptionPlusController: UIViewController!
+    var DepositController: UIViewController!
     var imageHeaderView: ImageHeaderView!
     
     required init?(coder aDecoder: NSCoder) {
@@ -51,6 +54,9 @@ class LeftViewController : UIViewController, LeftMenuProtocol {
         
         let SubscriptionPlusController = storyboard.instantiateViewController(withIdentifier: "SubscriptionPlusController") as! SubscriptionPlusController
         self.SubscriptionPlusController = UINavigationController(rootViewController: SubscriptionPlusController)
+        
+        let DepositController = storyboard.instantiateViewController(withIdentifier: "DepositController") as! DepositController
+        self.DepositController = UINavigationController(rootViewController: DepositController)
 //
 //        let nonMenuController = storyboard.instantiateViewController(withIdentifier: "NonMenuController") as! NonMenuController
 //        nonMenuController.delegate = self
@@ -74,16 +80,18 @@ class LeftViewController : UIViewController, LeftMenuProtocol {
     
     func changeViewController(_ menu: LeftMenu) {
         switch menu {
-        case .main:
-            self.slideMenuController()?.changeMainViewController(self.mainViewController, close: true)
-        case .swift:
+        case .rentRevenue:
+            self.slideMenuController()?.changeMainViewController(self.RentRevenueController, close: true)
+        case .commission:
             self.slideMenuController()?.changeMainViewController(self.CommissionFeeController, close: true)
-        case .java:
+        case .squareMeter:
             self.slideMenuController()?.changeMainViewController(self.SquareMeterController, close: true)
-        case .go:
+        case .interest:
             self.slideMenuController()?.changeMainViewController(self.InterestController, close: true)
-        case .nonMenu:
+        case .subscriptionPlus:
             self.slideMenuController()?.changeMainViewController(self.SubscriptionPlusController, close: true)
+        case .deposit:
+            self.slideMenuController()?.changeMainViewController(self.DepositController, close: true)
         }
     }
 }
@@ -92,7 +100,7 @@ extension LeftViewController : UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if let menu = LeftMenu(rawValue: indexPath.row) {
             switch menu {
-            case .main, .swift, .java, .go, .nonMenu:
+            case .rentRevenue, .commission, .squareMeter, .interest, .subscriptionPlus, .deposit:
                 return BaseTableViewCell.height()
             }
         }
@@ -122,7 +130,7 @@ extension LeftViewController : UITableViewDataSource {
         
         if let menu = LeftMenu(rawValue: indexPath.row) {
             switch menu {
-            case .main, .swift, .java, .go, .nonMenu:
+            case .rentRevenue, .commission, .squareMeter, .interest, .subscriptionPlus, .deposit:
                 let cell = BaseTableViewCell(style: UITableViewCellStyle.subtitle, reuseIdentifier: BaseTableViewCell.identifier)
                 cell.setData(menus[indexPath.row])
                 return cell

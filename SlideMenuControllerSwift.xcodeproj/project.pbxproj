@@ -19,6 +19,8 @@
 		0E75C5A31BE3CA9F00844634 /* SlideMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5BA8AA51A43E2EF00863FB9 /* SlideMenuController.swift */; };
 		0E75C5A61BE3CAFE00844634 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0E75C5A41BE3CAFE00844634 /* Info.plist */; };
 		0EB8EBFF1BE3CF3C00BC2A99 /* SlideMenuControllerSwift.h in Headers */ = {isa = PBXBuildFile; fileRef = 0E75C5A51BE3CAFE00844634 /* SlideMenuControllerSwift.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BFD98DFA2112616000309E9B /* Admob.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD98DF92112616000309E9B /* Admob.swift */; };
+		BFD98DFC2112656900309E9B /* DepositController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD98DFB2112656900309E9B /* DepositController.swift */; };
 		C539E6471A315E87003B7CC7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C539E6461A315E87003B7CC7 /* AppDelegate.swift */; };
 		C539E64A1A315E87003B7CC7 /* SlideMenuControllerSwift.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C539E6481A315E87003B7CC7 /* SlideMenuControllerSwift.xcdatamodeld */; };
 		C539E64C1A315E87003B7CC7 /* RentRevenueController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C539E64B1A315E87003B7CC7 /* RentRevenueController.swift */; };
@@ -73,6 +75,8 @@
 		0E75C5961BE3CA7900844634 /* SlideMenuControllerSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SlideMenuControllerSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		0E75C5A41BE3CAFE00844634 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = Source/Info.plist; sourceTree = "<group>"; };
 		0E75C5A51BE3CAFE00844634 /* SlideMenuControllerSwift.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SlideMenuControllerSwift.h; path = Source/SlideMenuControllerSwift.h; sourceTree = "<group>"; };
+		BFD98DF92112616000309E9B /* Admob.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Admob.swift; sourceTree = "<group>"; };
+		BFD98DFB2112656900309E9B /* DepositController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DepositController.swift; sourceTree = "<group>"; };
 		C539E6411A315E87003B7CC7 /* SlideMenuControllerSwift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SlideMenuControllerSwift.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C539E6451A315E87003B7CC7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C539E6461A315E87003B7CC7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -155,6 +159,14 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		BFD98DF82112614D00309E9B /* Libs */ = {
+			isa = PBXGroup;
+			children = (
+				BFD98DF92112616000309E9B /* Admob.swift */,
+			);
+			path = Libs;
+			sourceTree = "<group>";
+		};
 		C539E6381A315E87003B7CC7 = {
 			isa = PBXGroup;
 			children = (
@@ -184,6 +196,7 @@
 		C539E6431A315E87003B7CC7 /* SlideMenuControllerSwift */ = {
 			isa = PBXGroup;
 			children = (
+				BFD98DF82112614D00309E9B /* Libs */,
 				C539E6461A315E87003B7CC7 /* AppDelegate.swift */,
 				C5C1CE631A70F7C400B6E411 /* ViewController */,
 				C5C1CE641A70F7EC00B6E411 /* View */,
@@ -272,6 +285,7 @@
 				C5BF6A891BF3335D0064C18E /* SubContentsViewController.storyboard */,
 				C5BF6A8B1BF340020064C18E /* ExSlideMenuController.swift */,
 				090895021FDCFE9900203897 /* SubscriptionPlusController.swift */,
+				BFD98DFB2112656900309E9B /* DepositController.swift */,
 			);
 			name = ViewController;
 			sourceTree = "<group>";
@@ -447,6 +461,8 @@
 				C5BF6A8E1BF34A8B0064C18E /* UIApplication.swift in Sources */,
 				C5BD39DE1A6CD17B00D0AF95 /* InterestController.swift in Sources */,
 				C539E64C1A315E87003B7CC7 /* RentRevenueController.swift in Sources */,
+				BFD98DFA2112616000309E9B /* Admob.swift in Sources */,
+				BFD98DFC2112656900309E9B /* DepositController.swift in Sources */,
 				C5BD39E01A6CDC8100D0AF95 /* UIViewController.swift in Sources */,
 				C5C1CE611A70F3B600B6E411 /* UITableViewExtension.swift in Sources */,
 				C539E64A1A315E87003B7CC7 /* SlideMenuControllerSwift.xcdatamodeld in Sources */,
