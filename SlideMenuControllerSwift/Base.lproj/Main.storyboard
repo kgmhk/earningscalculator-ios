@@ -1916,7 +1916,7 @@
                                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="jxp-w5-SW2">
                                                                 <rect key="frame" x="64" y="0.0" width="496" height="130"/>
                                                                 <subviews>
-                                                                    <segmentedControl opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="749" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="DL3-E3-ns7">
+                                                                    <segmentedControl opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="752" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="DL3-E3-ns7">
                                                                         <rect key="frame" x="0.0" y="0.0" width="496" height="16"/>
                                                                         <segments>
                                                                             <segment title="예금"/>
@@ -1942,11 +1942,11 @@
                                                                             <action selector="yearlyInterestChanged:" destination="pvv-x0-mQM" eventType="valueChanged" id="OjJ-Fi-uFb"/>
                                                                         </connections>
                                                                     </segmentedControl>
-                                                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="right" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="vSG-Yi-pIX" userLabel="YearlyInterestEdit">
+                                                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="right" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="vSG-Yi-pIX" userLabel="YearlyInterestEdit">
                                                                         <rect key="frame" x="0.0" y="69" width="496" height="15"/>
                                                                         <nil key="textColor"/>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                                        <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                                                        <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
                                                                     </textField>
                                                                     <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="ybJ-VQ-jlr">
                                                                         <rect key="frame" x="0.0" y="92" width="496" height="16"/>
@@ -1959,11 +1959,11 @@
                                                                             <action selector="interestTaxChanged:" destination="pvv-x0-mQM" eventType="valueChanged" id="lml-lb-1qv"/>
                                                                         </connections>
                                                                     </segmentedControl>
-                                                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="right" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="gQ9-2Z-kA7" userLabel="InterestTaxEdit">
+                                                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="15.4" borderStyle="roundedRect" textAlignment="right" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="gQ9-2Z-kA7" userLabel="InterestTaxEdit">
                                                                         <rect key="frame" x="0.0" y="115" width="496" height="15"/>
                                                                         <nil key="textColor"/>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                                        <textInputTraits key="textInputTraits" keyboardType="numberPad" enablesReturnKeyAutomatically="YES"/>
+                                                                        <textInputTraits key="textInputTraits" keyboardType="decimalPad" enablesReturnKeyAutomatically="YES"/>
                                                                     </textField>
                                                                 </subviews>
                                                             </stackView>

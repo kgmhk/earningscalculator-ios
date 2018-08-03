@@ -18,9 +18,10 @@ import GoogleMobileAds
 class DepositController: UIViewController, UITextFieldDelegate {
     private var selectStatus: TypeOfAccountStatus = TypeOfAccountStatus.deposit;
     
-    private var dealPrice: Double = 0;
-    private var depositPrice: Double = 0;
-    private var commissionMothlyPrice: Double = 0;
+    private var depositAmount: Double = 0;
+    private var yearlyInterestRate: Double = 0;
+    private var interestTaxRate: Double = 0;
+    
     
     @IBOutlet weak var depositTextField: UITextField!
     @IBOutlet weak var yearlyInterestTextField: UITextField!
@@ -72,19 +73,7 @@ class DepositController: UIViewController, UITextFieldDelegate {
             textField.text = amountString
         }
     }
-//    func depositPriceTextFieldDidChange(_ textField: UITextField) {
-//        
-//        if let amountString = depositPriceTextField.text?.currencyInputFormatting() {
-//            textField.text = amountString
-//        }
-//    }
-//    func commissionMonthlyPriceTextFieldDidChange(_ textField: UITextField) {
-//        
-//        if let amountString = commissionMonthlyPriceTextField.text?.currencyInputFormatting() {
-//            textField.text = amountString
-//        }
-//    }
-    
+
     // Designate this class as the text fields' delegate
     // and set their keyboards while we're at it.
     func initializeTextFields() {
@@ -113,11 +102,18 @@ class DepositController: UIViewController, UITextFieldDelegate {
         let prospectiveText = (currentText as NSString).replacingCharacters(in: range, with: string)
         
         switch textField {
-        case depositTextField,
-             interestTaxField,
-             yearlyInterestTextField:
+        case depositTextField:
             print(currentText)
             return prospectiveText.characters.count <= 14
+        case yearlyInterestTextField,
+             interestTaxField:
+            let countdots = (textField.text?.components(separatedBy:".").count)! - 1
+            
+            if countdots > 0 && string == "."
+            {
+                return false
+            }
+            return prospectiveText.characters.count <= 10
         default:
             return true
         }
@@ -129,7 +125,7 @@ class DepositController: UIViewController, UITextFieldDelegate {
         print("click button", selectStatus);
         switch selectStatus {
         case TypeOfAccountStatus.deposit:
-//            calDeposit()
+            calDeposit()
             print("clieckt deposit " )
         case TypeOfAccountStatus.installmentSavings:
 //            calInstallmentSavings()
@@ -137,6 +133,37 @@ class DepositController: UIViewController, UITextFieldDelegate {
         default:
             return;
         }
+        
+    }
+    
+    // 예금
+    func calDeposit() -> Void {
+        print("cal deposit")
+        if let text = depositTextField.text, !text.isEmpty {
+            let replacedText = text.replacingOccurrences(of: ",", with: "")
+            depositAmount = Double(replacedText)!;
+        } else {
+            depositAmount = 0;
+        }
+        
+        if let text = interestTaxField.text, !text.isEmpty {
+            let replacedText = text.replacingOccurrences(of: ",", with: "")
+            interestTaxRate = Double(replacedText)!;
+        } else {
+            interestTaxRate = 0.0;
+        }
+        
+        if let text = yearlyInterestTextField.text, !text.isEmpty {
+            let replacedText = text.replacingOccurrences(of: ",", with: "")
+            yearlyInterestRate = Double(replacedText)!;
+        } else {
+            yearlyInterestRate = 0.0;
+        }
+        
+        if (depositAmount == 0 || interestTaxRate == 0 || yearlyInterestRate == 0) {
+            self.showToast(message: "모든 항목을 입력해주세요.")
+        }
+        
         
     }
     
@@ -355,23 +382,33 @@ class DepositController: UIViewController, UITextFieldDelegate {
         bannerView.load(request)
     }
     
+    // 이자과세
     @IBAction func interestTaxChanged(_ sender: UISegmentedControl) {
         switch interestTaxSegmentedControl.selectedSegmentIndex {
         case 0:
-            print("0")
+            print("일반과세 15.4")
+            interestTaxField.text = "15.4"
+            interestTaxField.isEnabled = false
         case 1:
-            print("1")
+            print("비과세 0")
+            interestTaxField.text = "0"
+            interestTaxField.isEnabled = false
+        case 2:
+            print("우대과세 9.5")
+            interestTaxField.text = "9.5"
+            interestTaxField.isEnabled = true
         default:
             break
         }
     }
     
+    // 연이자율
     @IBAction func yearlyInterestChanged(_ sender: UISegmentedControl) {
         switch yearlyInterestSegmentedControl.selectedSegmentIndex {
         case 0:
-            print("clicked once")
+            print("단리")
         case 1:
-            print("clicked multi")
+            print("복리")
         default:
             break
         }
