@@ -19,13 +19,21 @@ class DepositController: UIViewController, UITextFieldDelegate {
     private var selectStatus: TypeOfAccountStatus = TypeOfAccountStatus.deposit;
     
     private var depositAmount: Double = 0;
+    private var depositPeriod: Double = 0;
     private var yearlyInterestRate: Double = 0;
     private var interestTaxRate: Double = 0;
     
+    private var yearlyInterestSegment: TypeOfInterest = TypeOfInterest.simpleInterest
+    
+    @IBOutlet weak var principalSumLabel: UILabel!
+    @IBOutlet weak var interestBeforeTaxLabel: UILabel!
+    @IBOutlet weak var interestTaxResultLabel: UILabel!
+    @IBOutlet weak var interestTotalResultLabel: UILabel!
     
     @IBOutlet weak var depositTextField: UITextField!
     @IBOutlet weak var yearlyInterestTextField: UITextField!
     @IBOutlet weak var interestTaxField: UITextField!
+    @IBOutlet weak var depositPeriodTextField: UITextField!
     
     @IBOutlet weak var commissionMonthlyPriceTitle: UILabel!
     @IBOutlet weak var dealPriceTitle: UILabel!
@@ -33,10 +41,7 @@ class DepositController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var interestTaxSegmentedControl: UISegmentedControl!
     @IBOutlet weak var yearlyInterestSegmentedControl: UISegmentedControl!
-    @IBOutlet weak var dealPriceResult: UILabel!
-    @IBOutlet weak var upperLimitRateResult: UILabel!
-    @IBOutlet weak var upperLimitPriceResult: UILabel!
-    @IBOutlet weak var maxCommissionPriceResult: UILabel!
+    
     @IBOutlet weak var segmentedControl: UISegmentedControl!
     @IBOutlet weak var bannerView: GADBannerView!
     
@@ -57,6 +62,7 @@ class DepositController: UIViewController, UITextFieldDelegate {
         depositTextField.inputAccessoryView = keyboardToolbar
         yearlyInterestTextField.inputAccessoryView = keyboardToolbar
         interestTaxField.inputAccessoryView = keyboardToolbar
+        depositPeriodTextField.inputAccessoryView = keyboardToolbar
         
         formatterToCurrency.numberStyle = .currency
         formatterToCurrency.currencySymbol = ""
@@ -79,6 +85,9 @@ class DepositController: UIViewController, UITextFieldDelegate {
     func initializeTextFields() {
         depositTextField.delegate = self
         depositTextField.keyboardType = UIKeyboardType.numberPad
+        
+        depositPeriodTextField.delegate = self
+        depositPeriodTextField.keyboardType = UIKeyboardType.numberPad
         
         yearlyInterestTextField.delegate = self
         yearlyInterestTextField.keyboardType = UIKeyboardType.decimalPad
@@ -105,6 +114,8 @@ class DepositController: UIViewController, UITextFieldDelegate {
         case depositTextField:
             print(currentText)
             return prospectiveText.characters.count <= 14
+        case depositPeriodTextField:
+            return prospectiveText.characters.count <= 3
         case yearlyInterestTextField,
              interestTaxField:
             let countdots = (textField.text?.components(separatedBy:".").count)! - 1
@@ -128,7 +139,7 @@ class DepositController: UIViewController, UITextFieldDelegate {
             calDeposit()
             print("clieckt deposit " )
         case TypeOfAccountStatus.installmentSavings:
-//            calInstallmentSavings()
+            calInstallmentSavings()
             print("cleickt installment")
         default:
             return;
@@ -139,11 +150,80 @@ class DepositController: UIViewController, UITextFieldDelegate {
     // 예금
     func calDeposit() -> Void {
         print("cal deposit")
+        checkInput()
+        
+        if (TypeOfInterest.simpleInterest == yearlyInterestSegment) {
+            var interestAmount = depositAmount * ( yearlyInterestRate / 100 ) * ( depositPeriod / 12 )
+            var interestTax = interestAmount *  ( interestTaxRate / 100 )
+            var totalResult = depositAmount + interestAmount - interestTax
+            
+            principalSumLabel.text = formatterToCurrency.string(from: depositAmount.rounded() as NSNumber)
+            interestBeforeTaxLabel.text = formatterToCurrency.string(from: interestAmount.rounded() as NSNumber)
+            interestTaxResultLabel.text = "- " + formatterToCurrency.string(from: interestTax.rounded() as NSNumber)!
+            interestTotalResultLabel.text = formatterToCurrency.string(from: totalResult.rounded() as NSNumber)
+        } else {
+            let tempRate = (1 + (yearlyInterestRate / 100) / 12 );
+            let interestAmount = depositAmount * pow( tempRate, depositPeriod);
+            let interestTax = (interestAmount - depositAmount) * ( interestTaxRate / 100 );
+            let interestBeforeTaxResult = interestAmount - depositAmount
+            let interestTotalResult = interestAmount - interestTax
+            
+            principalSumLabel.text = formatterToCurrency.string(from: depositAmount.rounded() as NSNumber)
+            interestBeforeTaxLabel.text = formatterToCurrency.string(from: interestBeforeTaxResult.rounded() as NSNumber)
+            interestTaxResultLabel.text = "- " + formatterToCurrency.string(from: interestTax.rounded() as NSNumber)!
+            interestTotalResultLabel.text = formatterToCurrency.string(from: interestTotalResult.rounded() as NSNumber)
+        }
+        
+        
+    }
+    
+    func calInstallmentSavings() -> Void {
+        checkInput()
+    
+        var monthlyArg = depositPeriod * ( depositPeriod + 1 ) / 2;
+        
+        if (TypeOfInterest.simpleInterest == yearlyInterestSegment) {
+            let interestAmount = depositAmount * ( yearlyInterestRate / 100 ) * monthlyArg / 12;
+            let interestTax = interestAmount * ( interestTaxRate / 100 );
+            let principalSumResult = depositAmount * depositPeriod;
+            let totalResult = principalSumResult + interestAmount - interestTax
+            
+            principalSumLabel.text = formatterToCurrency.string(from: principalSumResult.rounded() as NSNumber)
+            interestBeforeTaxLabel.text = formatterToCurrency.string(from: interestAmount.rounded() as NSNumber)
+            interestTaxResultLabel.text = "- " + formatterToCurrency.string(from: interestTax.rounded() as NSNumber)!
+            interestTotalResultLabel.text = formatterToCurrency.string(from: totalResult.rounded() as NSNumber)
+        } else {
+            let monthlyInterestRate = ((yearlyInterestRate / 100) / 12 );
+            let totalResult = depositAmount *
+                (1 + monthlyInterestRate) *
+                (pow((1 + monthlyInterestRate), depositPeriod) - 1) /
+            monthlyInterestRate;
+            
+            let interestAmount = totalResult - ( depositAmount * depositPeriod );
+            let interestTax = (interestAmount) * ( interestTaxRate / 100 );
+            let principalSumResult = depositAmount * depositPeriod;
+            
+            
+            principalSumLabel.text = formatterToCurrency.string(from: principalSumResult.rounded() as NSNumber)
+            interestBeforeTaxLabel.text = formatterToCurrency.string(from: interestAmount.rounded() as NSNumber)
+            interestTaxResultLabel.text = "- " + formatterToCurrency.string(from: interestTax.rounded() as NSNumber)!
+            interestTotalResultLabel.text = formatterToCurrency.string(from: (totalResult.rounded() - interestTax.rounded()) as NSNumber)
+        }
+    }
+
+    func checkInput() -> Void {
         if let text = depositTextField.text, !text.isEmpty {
             let replacedText = text.replacingOccurrences(of: ",", with: "")
             depositAmount = Double(replacedText)!;
         } else {
             depositAmount = 0;
+        }
+        
+        if let text = depositPeriodTextField.text, !text.isEmpty {
+            let replacedText = text.replacingOccurrences(of: ",", with: "")
+            depositPeriod = Double(replacedText)!;
+        } else {
+            depositPeriod = 0;
         }
         
         if let text = interestTaxField.text, !text.isEmpty {
@@ -160,74 +240,11 @@ class DepositController: UIViewController, UITextFieldDelegate {
             yearlyInterestRate = 0.0;
         }
         
-        if (depositAmount == 0 || interestTaxRate == 0 || yearlyInterestRate == 0) {
+        if (depositAmount == 0 || yearlyInterestRate == 0 || depositPeriod == 0) {
             self.showToast(message: "모든 항목을 입력해주세요.")
+            return;
         }
-        
-        
     }
-    
-//    // 예금
-//    func calDeposit() -> Void {
-//        print("calAboutDeal")
-//
-//        if let text = dealPriceTextField.text, !text.isEmpty {
-//            let replacedText = text.replacingOccurrences(of: ",", with: "")
-//            dealPrice = Double(replacedText)!;
-//        } else {
-//            dealPrice = 0;
-//        }
-//
-//        if (dealPrice == 0) {
-//            self.showToast(message: "거래금액을 입력해주세요.");
-//        }
-//
-//        if (dealPrice < 50000000) {
-//            var dealResult = dealPrice * 0.006;
-//
-//            if(dealResult > 250000) {
-//                dealResult = 2500000;
-//            }
-//
-//            dealPriceResult.text = dealPriceTextField.text
-//            maxCommissionPriceResult.text = formatterToCurrency.string(from: dealResult as NSNumber)
-//            upperLimitPriceResult.text = "250,000"
-//            upperLimitRateResult.text = "0.6"
-//        } else if (dealPrice >= 50000000 && dealPrice < 200000000) {
-//            var dealResult = dealPrice * 0.005;
-//
-//            if(dealResult > 800000) {
-//                dealResult = 800000;
-//            }
-//            dealPriceResult.text = dealPriceTextField.text
-//            maxCommissionPriceResult.text = formatterToCurrency.string(from: dealResult as NSNumber)
-//            upperLimitPriceResult.text = "800,000"
-//            upperLimitRateResult.text = "0.5"
-//        } else if (dealPrice >= 200000000 && dealPrice < 600000000) {
-//            let dealResult = dealPrice * 0.004;
-//
-//            dealPriceResult.text = dealPriceTextField.text
-//            maxCommissionPriceResult.text = formatterToCurrency.string(from: dealResult as NSNumber)
-//            upperLimitPriceResult.text = "-"
-//            upperLimitRateResult.text = "0.4"
-//        } else if (dealPrice >= 600000000 && dealPrice < 900000000) {
-//            let dealResult = dealPrice * 0.005;
-//
-//            dealPriceResult.text = dealPriceTextField.text
-//            maxCommissionPriceResult.text = formatterToCurrency.string(from: dealResult as NSNumber)
-//            upperLimitPriceResult.text = "-"
-//            upperLimitRateResult.text = "0.5"
-//        } else {
-//            let dealResult = dealPrice * 0.009;
-//
-//            dealPriceResult.text = dealPriceTextField.text
-//            maxCommissionPriceResult.text = formatterToCurrency.string(from: dealResult as NSNumber)
-//            upperLimitPriceResult.text = "-"
-//            upperLimitRateResult.text = "0.9"
-//        }
-//
-//    }
-//
 //    // 적금
 //    func calInstallmentSavings() -> Void {
 //        print("calAboutLease")
@@ -367,7 +384,7 @@ class DepositController: UIViewController, UITextFieldDelegate {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        self.title = "중개 수수료"
+        self.title = "예적금 계산기"
         self.setNavigationBarItem()
         
         // admob banner ads
@@ -407,8 +424,10 @@ class DepositController: UIViewController, UITextFieldDelegate {
         switch yearlyInterestSegmentedControl.selectedSegmentIndex {
         case 0:
             print("단리")
+            yearlyInterestSegment = TypeOfInterest.simpleInterest
         case 1:
             print("복리")
+            yearlyInterestSegment = TypeOfInterest.compoundInteres
         default:
             break
         }

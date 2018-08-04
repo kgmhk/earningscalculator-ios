@@ -23,7 +23,7 @@ protocol LeftMenuProtocol : class {
 class LeftViewController : UIViewController, LeftMenuProtocol {
     
     @IBOutlet weak var tableView: UITableView!
-    var menus = ["임대수익률", "중개 수수료(복비계산)", "평형 계산", "대출 이자", "청약 가점", "예금 계산기"]
+    var menus = ["임대수익률", "중개 수수료(복비계산)", "평형 계산", "대출 이자", "청약 가점", "예적금 계산기"]
 //    var mainViewController: UIViewController!
     var RentRevenueController: UIViewController!
     var CommissionFeeController: UIViewController!

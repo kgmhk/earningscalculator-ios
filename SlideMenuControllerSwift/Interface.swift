@@ -17,3 +17,8 @@ enum TypeOfAccountStatus: Int {
     case deposit = 1
     case installmentSavings
 }
+
+enum TypeOfInterest: Int {
+    case simpleInterest = 1
+    case compoundInteres
+}
