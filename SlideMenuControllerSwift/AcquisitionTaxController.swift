@@ -55,6 +55,8 @@ import GoogleMobileAds
         keyboardToolbar.items = [flexBarButton, doneBarButton]
         squareOrMeterPickerField.inputAccessoryView = keyboardToolbar
         divisionPickerField.inputAccessoryView = keyboardToolbar
+        squareOrMeterTextField.inputAccessoryView = keyboardToolbar
+        tradePriceTextField.inputAccessoryView = keyboardToolbar
         
         // admob banner ads
         bannerView.adUnitID = "ca-app-pub-2778546304304506/2899286231"
