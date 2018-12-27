@@ -14,6 +14,8 @@ enum LeftMenu: Int {
     case interest
     case subscriptionPlus
     case deposit
+    case acquisitionTax
+    case rentIncreaseRate
 }
 
 protocol LeftMenuProtocol : class {
@@ -23,7 +25,7 @@ protocol LeftMenuProtocol : class {
 class LeftViewController : UIViewController, LeftMenuProtocol {
     
     @IBOutlet weak var tableView: UITableView!
-    var menus = ["임대수익률", "중개 수수료(복비계산)", "평형 계산", "대출 이자", "청약 가점", "예적금 계산기"]
+    var menus = ["임대수익률", "중개 수수료(복비계산)", "평형 계산", "대출 이자", "청약 가점", "예적금 계산기", "취득세 계산기", "월세 인상률 계산기"]
 //    var mainViewController: UIViewController!
     var RentRevenueController: UIViewController!
     var CommissionFeeController: UIViewController!
@@ -32,6 +34,8 @@ class LeftViewController : UIViewController, LeftMenuProtocol {
     var nonMenuViewController: UIViewController!
     var SubscriptionPlusController: UIViewController!
     var DepositController: UIViewController!
+    var AcquisitionTaxController: UIViewController!
+    var RentIncreaseRateController: UIViewController!
     var imageHeaderView: ImageHeaderView!
     
     required init?(coder aDecoder: NSCoder) {
@@ -57,6 +61,12 @@ class LeftViewController : UIViewController, LeftMenuProtocol {
         
         let DepositController = storyboard.instantiateViewController(withIdentifier: "DepositController") as! DepositController
         self.DepositController = UINavigationController(rootViewController: DepositController)
+        
+        let AcquisitionTaxController = storyboard.instantiateViewController(withIdentifier: "AquisitionTaxController") as! AcquisitionTaxController
+        self.AcquisitionTaxController = UINavigationController(rootViewController: AcquisitionTaxController)
+        
+        let RentIncreaseRateController = storyboard.instantiateViewController(withIdentifier: "RentIncreaseRateController") as! RentIncreaseRateController
+        self.RentIncreaseRateController = UINavigationController(rootViewController: RentIncreaseRateController)
 //
 //        let nonMenuController = storyboard.instantiateViewController(withIdentifier: "NonMenuController") as! NonMenuController
 //        nonMenuController.delegate = self
@@ -92,6 +102,10 @@ class LeftViewController : UIViewController, LeftMenuProtocol {
             self.slideMenuController()?.changeMainViewController(self.SubscriptionPlusController, close: true)
         case .deposit:
             self.slideMenuController()?.changeMainViewController(self.DepositController, close: true)
+        case .acquisitionTax:
+            self.slideMenuController()?.changeMainViewController(self.AcquisitionTaxController, close: true)
+        case .rentIncreaseRate:
+            self.slideMenuController()?.changeMainViewController(self.RentIncreaseRateController, close: true)
         }
     }
 }
@@ -100,7 +114,7 @@ extension LeftViewController : UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if let menu = LeftMenu(rawValue: indexPath.row) {
             switch menu {
-            case .rentRevenue, .commission, .squareMeter, .interest, .subscriptionPlus, .deposit:
+            case .rentRevenue, .commission, .squareMeter, .interest, .subscriptionPlus, .deposit, .acquisitionTax, .rentIncreaseRate:
                 return BaseTableViewCell.height()
             }
         }
@@ -130,7 +144,7 @@ extension LeftViewController : UITableViewDataSource {
         
         if let menu = LeftMenu(rawValue: indexPath.row) {
             switch menu {
-            case .rentRevenue, .commission, .squareMeter, .interest, .subscriptionPlus, .deposit:
+            case .rentRevenue, .commission, .squareMeter, .interest, .subscriptionPlus, .deposit, .acquisitionTax, .rentIncreaseRate:
                 let cell = BaseTableViewCell(style: UITableViewCellStyle.subtitle, reuseIdentifier: BaseTableViewCell.identifier)
                 cell.setData(menus[indexPath.row])
                 return cell
